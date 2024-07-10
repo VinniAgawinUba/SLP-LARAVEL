@@ -8,4 +8,13 @@ class college extends Model
 {
     protected $table = 'college';
     protected $fillable = ['name', 'dean_id', 'logo_image'];
+    public function departments()
+    {
+        return $this->hasMany(department::class);
+    }
+
+    public function projects()
+    {
+        return $this->hasMany(projects::class);
+    }
 }
