@@ -18,7 +18,7 @@ Route::post('/login', [LoginController::class, 'Checklogin'])->name('login.submi
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Partners
-Route::get('/partners', [PageController::class, 'partners'])->name('partners');
+Route::get('/partners', [PartnersController::class, 'Frontpage_partners'])->name('frontpage_partners');
 
 //Projects
 Route::get('/projects', [PageController::class, 'projects'])->name('projects');
