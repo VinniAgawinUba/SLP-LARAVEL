@@ -1,3 +1,5 @@
+<!-- resources/views/layouts/app.blade.php -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="assets/css/bootstrap5.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap5.min.css') }}">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
@@ -29,7 +31,6 @@
             font-size: 13px;
             line-height: 16px;
             letter-spacing: 0.205em;
-
             color: rgba(40, 57, 113, 0.47);
         }
 
@@ -47,12 +48,10 @@
             letter-spacing: 3px;
         }
 
-
         hr {
             width: 798px;
             height: 4px;
             left: calc(50% - 798px/2 - 8px);
-
             background: #283971;
             border-radius: 14px;
         }
@@ -102,14 +101,6 @@
     </style>
 </head>
 
-<?php
-if (isset($_GET['query'])) {
-    $placeholder = $_GET['query'];
-} else {
-    $placeholder = 'Search';
-}
-?>
-
 <body>
     <header>
         <div class="container">
@@ -120,80 +111,72 @@ if (isset($_GET['query'])) {
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <a href="index.php" style="width:400px;">
-                            <img src="assets/images/XULOGO.png" alt="Logo" style="width: 80%;">
+                        <a href="{{ url('/') }}" style="width:400px;">
+                            <img src="{{ asset('assets/images/XULOGO.png') }}" alt="Logo" style="width: 80%;">
                         </a>
-                        <form class="d-flex justify-content-center ms-auto" action="search.php" method="GET">
-                            <input class="" id="custom-search" type="search" placeholder="<?= $placeholder ?>" name="query">
+                        <form class="d-flex justify-content-center ms-auto" action="{{ url('search') }}" method="GET">
+                            <input class="" id="custom-search" type="search" placeholder="{{ request('query', 'Search') }}" name="query">
                             <button class="btn btn-outline-primary" id="search-button" type="submit">Search</button>
                         </form>
-
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item text-center customfont">
-                                <a class="nav-link customfont" href="about-us.php">About Us</a>
+                                <a class="nav-link customfont" href="{{ url('about-us') }}">About Us</a>
                             </li>
-                            <?php if (isset($_SESSION['auth_user'])) : ?>
+                            @auth
                                 <li class="nav-item text-center dropdown customfont">
                                     <a class="nav-link text-center dropdown-toggle customfont" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <?= $_SESSION['auth_user']['user_name']; ?>
+                                        {{ Auth::user()->email }}
                                     </a>
                                     <ul class="dropdown-menu text-center customfont" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item customfont font-style" href="#">My Profile</a></li>
-
+                                        @if(Auth::user()->role == 'admin')
+                                            <li><a class="dropdown-item" href="{{ url('admin') }}">Admin Panel</a></li>
+                                        @endif
                                         <li>
-                                            <!-- If logged in and admin show shortcut to admin panel -->
-                                            <?php if ($_SESSION['auth_role'] == '1') {
-                                            ?>
-                                                <a class="dropdown-item" href="admin/index.php">Admin Panel</a>
-                                            <?php
-                                            } ?>
-                                        </li>
-
-                                        <li>
-                                            <form action="allcode.php" method="post">
-                                                <button type="submit" name="logout_btn" class="dropdown-item font-style" href="#">Logout</button>
+                                            <form action="{{ url('logout') }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="dropdown-item font-style">Logout</button>
                                             </form>
                                         </li>
                                     </ul>
                                 </li>
-                            <?php else : ?>
+                            @else
                                 <li class="nav-item">
-                                    <a class="nav-link customfont" href="login.php">Login</a>
+                                    <a class="nav-link customfont" href="{{ url('login') }}">Login</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link customfont" href="register.php">Register</a>
+                                    <a class="nav-link customfont" href="{{ url('register') }}">Register</a>
                                 </li>
-                            <?php endif; ?>
+                            @endauth
                         </ul>
                     </div>
                 </nav>
                 <div class="container">
                     <!-- Your container content goes here -->
                 </div>
-                <div></div>
             </div>
             <div id="header-links">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link active customfont font-style" id="nav-item" href="index.php">HOME</a>
+                        <a class="nav-link active customfont font-style" id="nav-item" href="{{ url('/') }}">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link customfont font-style" id="nav-item" href="partners.php">PARTNERS</a>
+                        <a class="nav-link customfont font-style" id="nav-item" href="{{ url('partners') }}">PARTNERS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link customfont font-style" id="nav-item" href="projects.php">PROJECTS</a>
+                        <a class="nav-link customfont font-style" id="nav-item" href="{{ url('projects') }}">PROJECTS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link customfont font-style" id="nav-item" href="articles.php">ARTICLES</a>
+                        <a class="nav-link customfont font-style" id="nav-item" href="{{ url('articles') }}">ARTICLES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link customfont font-style" id="nav-item" href="gallery.php">GALLERY</a>
+                        <a class="nav-link customfont font-style" id="nav-item" href="{{ url('gallery') }}">GALLERY</a>
                     </li>
                 </ul>
             </div>
         </div>
     </header>
+    @yield('content')
 </body>
 
 </html>
-</body>
