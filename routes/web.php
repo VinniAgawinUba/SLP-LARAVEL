@@ -8,7 +8,7 @@ use App\Http\Controllers\School_YearsController;
 use App\Http\Controllers\CollegesController;
 use App\Http\Controllers\DepartmentsController;
 
-Route::get('/', function () {return view('index');});
+Route::get('/', function () {return view('index');})->name('index');
 
 
 //Google Auth
@@ -39,3 +39,4 @@ Route::get('/articles/{article_id}', [ArticlesController::class, 'article'])->na
 Route::get('/gallery', [GalleriesController::class, 'gallery'])->name('gallery');
 
 //Admin Panel
+Route::get('/admin', [PageController::class, 'admin'])->name('admin');

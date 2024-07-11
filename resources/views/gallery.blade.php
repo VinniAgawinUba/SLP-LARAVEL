@@ -210,3 +210,5 @@
 <div class="pagination">
     {{ $galleries->links() }}
 </div>
+
+@include ('layout.scripts')

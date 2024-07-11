@@ -451,3 +451,5 @@
     <!-- Footer -->
     @include('layout.footer')
 </footer>
+
+@include ('layout.scripts')

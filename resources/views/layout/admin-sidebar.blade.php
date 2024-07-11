@@ -8,82 +8,78 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-                <div class="sb-sidenav-menu-heading">Core</div>
+                <div class="sb-sidenav-menu-heading">Modules</div>
                 <a class="nav-link" href="{{route('admin')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
 
                 @if(auth()->check() && in_array(auth()->user()->auth_role, ['super']))
-                    <a class="nav-link" href="{{ route('admin.registerView') }}">
+                    <a class="nav-link" href="">
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                         Registered Users
                     </a>
-
-                <!--- Recommending Approval -->
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRecommendingApproval" aria-expanded="false" aria-controls="collapseRecommendingApproval">
-                    <div class="sb-nav-link-icon"><span class="material-symbols-outlined"> approval_delegation </span></div>
-                    Recommending Approval
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-
-                <div class="collapse" id="collapseRecommendingApproval" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{route('admin.recommendingAdd.view')}}">Add Recommending Approval</a>
-                        <a class="nav-link" href="{{route('admin.recommendingView.view')}}">View Recommending Approval</a>
-                    </nav>
-                </div>
                 @endif
 
-                <!--- Requests -->
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRequests" aria-expanded="false" aria-controls="collapseRequests">
-                    <div class="sb-nav-link-icon"><i class="fas fa-sheet-plastic"></i></div>
-                    Requests
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-
-                <div class="collapse" id="collapseRequests" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        @if(auth()->check() && in_array(auth()->user()->auth_role, ['super']))
-                        <a class="nav-link" href="{{route('admin.workorder.add')}}">Add Requests</a>
-                        @endif
-                        <a class="nav-link" href="{{route('admin.workorder.view')}}">View Requests</a>
-                    </nav>
-                </div>
-
                 <!--- Faculty -->
-                @if(auth()->check() && in_array(auth()->user()->auth_role, ['super']))
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFaculty" aria-expanded="false" aria-controls="collapseFaculty">
-                    <div class="sb-nav-link-icon"><span class="material-symbols-outlined"> groups </span></div>
+                    <div class="sb-nav-link-icon"><span class="fas fa-users"> Faculty </span></div>
                     Faculty
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
 
                 <div class="collapse" id="collapseFaculty" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{route('admin.facultyAdd')}}">Add Faculty</a>
-                        <a class="nav-link" href="{{route('admin.facultyView')}}">View Faculty</a>
+                        <a class="nav-link" href="">Add Faculty</a>
+                        <a class="nav-link" href="">View Faculty</a>
                     </nav>
                 </div>
 
-                <!--- Location -->
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLocation" aria-expanded="false" aria-controls="collapseLocation">
-                    <div class="sb-nav-link-icon material-symbols-outlined"><span class="material-symbols-outlined" style="margin-left: -5px;">location_on</span></div>
-                    Location
+                <!--- Partners -->
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePartners" aria-expanded="false" aria-controls="collapsePartners">
+                    <div class="sb-nav-link-icon"><span class="fas fa-users"> Partners </span></div>
+                    Partners
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
 
-                <div class="collapse" id="collapseLocation" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <div class="collapse" id="collapsePartners" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{route('admin.locationView')}}">View Location</a>
-                        <a class="nav-link" href="{{route('admin.locationAdd')}}">Add Location</a>
+                        <a class="nav-link" href="">Add Partners</a>
+                        <a class="nav-link" href="">View Partners</a>
                     </nav>
                 </div>
-                @endif
+
+                <!--- Articles -->
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseArticles" aria-expanded="false" aria-controls="collapseArticles">
+                    <div class="sb-nav-link-icon material-symbols-outlined"><span class="fas fa-newspaper">Article</span></div>
+                    Articles
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+
+                <div class="collapse" id="collapseArticles" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="">Add Article</a>
+                        <a class="nav-link" href="">View Article</a>
+                    </nav>
+                </div>
+
+                <!--- Gallery -->
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseGallery" aria-expanded="false" aria-controls="collapseGallery">
+                    <div class="sb-nav-link-icon material-symbols-outlined"><span class="fas fa-image">Gallery</span></div>
+                    Gallery
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+
+                <div class="collapse" id="collapseGallery" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="">Add Gallery</a>
+                        <a class="nav-link" href="">View Gallery</a>
+                    </nav>
+                </div>
 
                 <!-- Interfaces -->
                 @if(auth()->check() && in_array(auth()->user()->auth_role, ['super']))
-                <div class="sb-sidenav-menu-heading">Interface</div>
+                <div class="sb-sidenav-menu-heading">Interface - Colleges, Departments, SY</div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseColleges" aria-expanded="false" aria-controls="collapseColleges">
                     <div class="sb-nav-link-icon"><i class="fas fa-school"></i></div>
                     School
@@ -99,8 +95,8 @@
                         </a>
                         <div class="collapse" id="pagesCollapseColleges" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="{{route('admin.collegeAdd')}}">Add Colleges</a>
-                                <a class="nav-link" href="{{route('admin.collegeView')}}">View Colleges</a>
+                                <a class="nav-link" href="">Add Colleges</a>
+                                <a class="nav-link" href="">View Colleges</a>
                             </nav>
                         </div>
 
@@ -111,13 +107,13 @@
                         </a>
                         <div class="collapse" id="pagesCollapseDepartments" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="{{route('admin.departmentAdd')}}">Add Departments</a>
-                                <a class="nav-link" href="{{route('admin.departmentView')}}">View Departments</a>
+                                <a class="nav-link" href="">Add Departments</a>
+                                <a class="nav-link" href="">View Departments</a>
                             </nav>
                         </div>
 
                         <!--  📅 routing to school year view -->
-                        <a class="nav-link" href="{{route('admin.school_yearView')}}">
+                        <a class="nav-link" href="">
                             <div class="sb-nav-link-icon" style="margin-right: 10px;"><i class="fas fa-calendar"></i></div>
                             School Years
                         </a>
@@ -133,7 +129,7 @@
 
 
 
-            <a class="small" href="{{route('home')}}">
+            <a class="small" href="{{route('index')}}">
                 <div class="sb-nav-link-icon"><i class="fas fa-home"></i>Return to Front Page</div>
 
             </a>

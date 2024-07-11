@@ -129,8 +129,8 @@
                                     </a>
                                     <ul class="dropdown-menu text-center customfont" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item customfont font-style" href="#">My Profile</a></li>
-                                        @if(Auth::user()->role == 'admin')
-                                            <li><a class="dropdown-item" href="{{ url('admin') }}">Admin Panel</a></li>
+                                        @if(auth()->check() && in_array(auth()->user()->auth_role, ['super']))
+                                            <li><a class="dropdown-item" href="{{ route('admin') }}">Admin Panel</a></li>
                                         @endif
                                         <li>
                                             <form action="{{ url('logout') }}" method="POST">

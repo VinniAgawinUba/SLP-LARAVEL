@@ -1,6 +1,7 @@
 <!-- resources/views/home.blade.php -->
 @include('layout.header')
 @include('layout.navbar')
+<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <style>
         #home-box {
             width: 1101px;
