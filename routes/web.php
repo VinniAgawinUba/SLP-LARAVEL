@@ -62,3 +62,11 @@ Route::post('/admin/faculty/add', [FacultiesController::class, 'FacultyInsert'])
 Route::get('/admin/faculty/edit/{id}', [FacultiesController::class, 'FacultyEdit'])->name('admin.facultyEdit');
 Route::post('/admin/faculty/update/{id}', [FacultiesController::class, 'FacultyUpdate'])->name('admin.facultyUpdate');
 Route::post('/admin/faculty/delete/{id}', [FacultiesController::class, 'FacultyDelete'])->name('admin.facultyDelete');
+
+//Admin Partners
+Route::get('/admin/partners/view', [PartnersController::class, 'PartnersView'])->name('admin.partnersView');
+Route::get('/admin/partners/add', [PartnersController::class, 'PartnersAdd'])->name('admin.partnersAdd');
+Route::post('/admin/partners/add', [PartnersController::class, 'PartnersInsert'])->name('admin.partnersInsert');
+Route::get('/admin/partners/edit/{id}', [PartnersController::class, 'PartnersEdit'])->name('admin.partnersEdit');
+Route::post('/admin/partners/update/{id}', [PartnersController::class, 'PartnersUpdate'])->name('admin.partnersUpdate');
+Route::post('/admin/partners/delete/{id}', [PartnersController::class, 'PartnersDelete'])->name('admin.partnersDelete');

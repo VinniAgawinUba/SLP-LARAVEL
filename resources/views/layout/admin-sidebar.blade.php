@@ -44,8 +44,8 @@
 
                 <div class="collapse" id="collapsePartners" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="">Add Partners</a>
-                        <a class="nav-link" href="">View Partners</a>
+                        <a class="nav-link" href="{{route('admin.partnersAdd')}}">Add Partners</a>
+                        <a class="nav-link" href="{{route('admin.partnersView')}}">View Partners</a>
                     </nav>
                 </div>
 

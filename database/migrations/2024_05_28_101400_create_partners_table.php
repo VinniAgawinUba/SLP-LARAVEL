@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
             $table->string('name', 191);
-            $table->string('logo_image', 191);
+            $table->string('logo_image', 191)->nullable();
             $table->text('address');
             $table->string('contact_person', 191);
             $table->string('email', 191);

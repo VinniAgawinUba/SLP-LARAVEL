@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4>Add Faculty
-                        <a href="{{ route('admin.facultyAdd') }}" class="btn btn-danger float-end">BACK</a>
+                        <a href="{{ route('admin.facultyView') }}" class="btn btn-danger float-end">BACK</a>
                     </h4>
                 </div>
                 <div class="card-body">

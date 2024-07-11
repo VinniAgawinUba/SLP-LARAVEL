@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('college_id');
             $table->unsignedBigInteger('department_id');
             $table->unsignedTinyInteger('role');
-            $table->string('image', 191);
+            $table->string('image', 191)->nullable();
             $table->timestamps();
         });
     }
