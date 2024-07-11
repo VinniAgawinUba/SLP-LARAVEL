@@ -75,10 +75,10 @@
 
 
 <!-- CSS For Select2 -->
-<link href="../admin/css/select2.min.css" rel="stylesheet" />
+<link href="{{asset('assets/css/select2.min.css')}}" rel="stylesheet" />
 
 <!-- JavaScript for Select2 -->
-<script src="../admin/js/select2.min.js"></script>
+<script src="{{asset('assets/js/select2.min.js')}}"></script>
 <script>
     // Initialize Select2 for dropdowns
     $(document).ready(function() {

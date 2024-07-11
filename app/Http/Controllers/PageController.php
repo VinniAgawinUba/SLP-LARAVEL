@@ -48,10 +48,10 @@ class PageController extends Controller
     }
 
     
-    //Registered Users View
     public function RegisterView(){
         // Retrieve All Data from Tables
         $users = User::all(); // Retrieve all Users
         return view('admin.register-view', ['user_list' => $users]);
     }
+
 }

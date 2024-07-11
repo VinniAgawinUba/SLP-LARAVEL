@@ -7,6 +7,12 @@ use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\School_YearsController;
 use App\Http\Controllers\CollegesController;
 use App\Http\Controllers\DepartmentsController;
+use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\PartnersController;
+use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\GalleriesController;
+use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\FacultiesController;
 
 Route::get('/', function () {return view('index');})->name('index');
 
@@ -40,3 +46,19 @@ Route::get('/gallery', [GalleriesController::class, 'gallery'])->name('gallery')
 
 //Admin Panel
 Route::get('/admin', [PageController::class, 'admin'])->name('admin');
+
+//Admin Panel Registered Users
+Route::get('/admin/register/view', [PageController::class, 'RegisterView'])->name('admin.registerView');
+Route::get('/admin/register/add', [RegisteredUserController::class, 'RegisterAdd'])->name('admin.registerAdd');
+Route::post('/admin/register/add', [RegisteredUserController::class, 'registerInsert'])->name('admin.registerInsert');
+Route::get('/admin/register/edit/{id}', [RegisteredUserController::class, 'RegisterEdit'])->name('admin.registerEdit');
+Route::put('/admin/register/update/{id}', [RegisteredUserController::class, 'registerUpdate'])->name('admin.registerUpdate');
+Route::post('/admin/register/delete', [RegisteredUserController::class, 'registerDelete'])->name('admin.registerDelete');
+
+//Admin Faculty
+Route::get('/admin/faculty/view', [FacultiesController::class, 'FacultyView'])->name('admin.facultyView');
+Route::get('/admin/faculty/add', [FacultiesController::class, 'FacultyAdd'])->name('admin.facultyAdd');
+Route::post('/admin/faculty/add', [FacultiesController::class, 'FacultyInsert'])->name('admin.facultyInsert');
+Route::get('/admin/faculty/edit/{id}', [FacultiesController::class, 'FacultyEdit'])->name('admin.facultyEdit');
+Route::post('/admin/faculty/update/{id}', [FacultiesController::class, 'FacultyUpdate'])->name('admin.facultyUpdate');
+Route::post('/admin/faculty/delete/{id}', [FacultiesController::class, 'FacultyDelete'])->name('admin.facultyDelete');

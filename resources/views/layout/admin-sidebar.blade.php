@@ -15,7 +15,7 @@
                 </a>
 
                 @if(auth()->check() && in_array(auth()->user()->auth_role, ['super']))
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{route('admin.registerView')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                         Registered Users
                     </a>
@@ -30,8 +30,8 @@
 
                 <div class="collapse" id="collapseFaculty" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="">Add Faculty</a>
-                        <a class="nav-link" href="">View Faculty</a>
+                        <a class="nav-link" href="{{route('admin.facultyAdd')}}">Add Faculty</a>
+                        <a class="nav-link" href="{{route('admin.facultyView')}}">View Faculty</a>
                     </nav>
                 </div>
 
