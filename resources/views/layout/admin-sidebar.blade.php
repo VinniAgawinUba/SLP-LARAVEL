@@ -72,8 +72,8 @@
 
                 <div class="collapse" id="collapseArticles" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="">Add Article</a>
-                        <a class="nav-link" href="">View Article</a>
+                        <a class="nav-link" href="{{route('admin.articlesAdd')}}">Add Article</a>
+                        <a class="nav-link" href="{{route('admin.articlesView')}}">View Article</a>
                     </nav>
                 </div>
 

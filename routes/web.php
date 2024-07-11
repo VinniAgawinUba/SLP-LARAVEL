@@ -78,3 +78,11 @@ Route::post('/admin/partners/add', [PartnersController::class, 'PartnersInsert']
 Route::get('/admin/partners/edit/{id}', [PartnersController::class, 'PartnersEdit'])->name('admin.partnersEdit');
 Route::post('/admin/partners/update/{id}', [PartnersController::class, 'PartnersUpdate'])->name('admin.partnersUpdate');
 Route::post('/admin/partners/delete/{id}', [PartnersController::class, 'PartnersDelete'])->name('admin.partnersDelete');
+
+//Admin Articles
+Route::get('/admin/articles/view', [ArticlesController::class, 'ArticlesView'])->name('admin.articlesView');
+Route::get('/admin/articles/add', [ArticlesController::class, 'ArticlesAdd'])->name('admin.articlesAdd');
+Route::post('/admin/articles/add', [ArticlesController::class, 'ArticlesInsert'])->name('admin.articlesInsert');
+Route::get('/admin/articles/edit/{id}', [ArticlesController::class, 'ArticlesEdit'])->name('admin.articlesEdit');
+Route::post('/admin/articles/update/{id}', [ArticlesController::class, 'ArticlesUpdate'])->name('admin.articlesUpdate');
+Route::post('/admin/articles/delete/{id}', [ArticlesController::class, 'ArticlesDelete'])->name('admin.articlesDelete');
