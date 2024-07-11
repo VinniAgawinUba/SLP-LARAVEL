@@ -266,4 +266,19 @@ class ProjectsController extends Controller
 
         return redirect()->route('admin.projectsView')->with('success', 'Project updated successfully!');
     }
+
+    public function ProjectsDelete(Request $request, $id)
+    {
+        // Find the project
+        $project = projects::findOrFail($id);
+    
+        // Delete associated project documents
+        $project->projectDocuments()->delete();
+    
+        // Delete the project itself
+        $project->delete();
+    
+        return redirect()->route('admin.projectsView')->with('success', 'Project deleted successfully!');
+    }
+    
 }
