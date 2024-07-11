@@ -11,6 +11,7 @@ use App\Models\faculty;
 use App\Models\partners;
 use App\Models\project_documents;
 use App\Models\project_sdgs;
+use App\Models\gallery;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectsController extends Controller
@@ -169,7 +170,10 @@ class ProjectsController extends Controller
             $projectSdg->save();
         }
 
+
+
         // Insert project documents
+        if ($request->hasFile('project_documents')){
         foreach ($request->file('project_documents') as $document) {
             $path = $document->store('project_documents');
             $projectDocument = new project_documents();
@@ -180,6 +184,12 @@ class ProjectsController extends Controller
             $projectDocument->file_path = $path;
             $projectDocument->save();
         }
+    }
+        //Auto create gallery for the project
+        $newGallery = new gallery();
+        $newGallery->project_id = $newProject->id;
+        $newGallery->name = "Gallery For $newProject->name";
+        $newGallery->save();
 
         return redirect()->route('admin.projectsView')->with('success', 'Project added successfully!');
     }
@@ -205,6 +215,23 @@ class ProjectsController extends Controller
 
         return view('admin.project-edit', compact('project', 'colleges', 'departments', 'faculties', 'partners', 'schoolYears', 'sdgs'));
     }
+
+    public function IndividualProjectDocumentDelete($id)
+    {
+        $document = project_documents::find($id);
+        if ($document) {
+            // Remove the document file from storage
+            Storage::delete($document->file_path);
+            
+            // Delete the document record from the database
+            $document->delete();
+            
+            return redirect()->back()->with('success', 'Document deleted successfully!');
+        }
+        return redirect()->back()->with('error', 'Document not found!');
+    }
+    
+
 
     public function ProjectsUpdate(Request $request, $id)
     {

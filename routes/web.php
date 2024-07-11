@@ -62,6 +62,7 @@ Route::post('/admin/projects/add', [ProjectsController::class, 'ProjectsInsert']
 Route::get('/admin/projects/edit/{id}', [ProjectsController::class, 'ProjectsEdit'])->name('admin.projectsEdit');
 Route::post('/admin/projects/update/{id}', [ProjectsController::class, 'ProjectsUpdate'])->name('admin.projectsUpdate');
 Route::post('/admin/projects/delete/{id}', [ProjectsController::class, 'ProjectsDelete'])->name('admin.projectsDelete');
+Route::delete('/admin/projects/document-delete/{id}', [ProjectsController::class, 'IndividualProjectDocumentDelete'])->name('admin.projects.documentDelete');
 
 //Admin Faculty
 Route::get('/admin/faculty/view', [FacultiesController::class, 'FacultyView'])->name('admin.facultyView');
@@ -86,3 +87,12 @@ Route::post('/admin/articles/add', [ArticlesController::class, 'ArticlesInsert']
 Route::get('/admin/articles/edit/{id}', [ArticlesController::class, 'ArticlesEdit'])->name('admin.articlesEdit');
 Route::post('/admin/articles/update/{id}', [ArticlesController::class, 'ArticlesUpdate'])->name('admin.articlesUpdate');
 Route::post('/admin/articles/delete/{id}', [ArticlesController::class, 'ArticlesDelete'])->name('admin.articlesDelete');
+
+//Admin Gallery
+Route::get('/admin/gallery/view', [GalleriesController::class, 'GalleryView'])->name('admin.galleryView');
+Route::get('/admin/gallery/add', [GalleriesController::class, 'GalleryAdd'])->name('admin.galleryAdd');
+Route::post('/admin/gallery/add', [GalleriesController::class, 'GalleryInsert'])->name('admin.galleryInsert');
+Route::get('/admin/gallery/edit/{id}', [GalleriesController::class, 'GalleryEdit'])->name('admin.galleryEdit');
+Route::post('/admin/gallery/update/{id}', [GalleriesController::class, 'GalleryUpdate'])->name('admin.galleryUpdate');
+Route::post('/admin/gallery/delete/{id}', [GalleriesController::class, 'GalleryDelete'])->name('admin.galleryDelete');
+Route::delete('/admin/photo-delete/{id}', [GalleriesController::class, 'PhotoDelete'])->name('admin.photoDelete');

@@ -112,13 +112,16 @@
                                     <label for="status">Status</label>
                                     <select name="status" required class="form-control">
                                         <option value="">--Select Status--</option>
-                                        <option value="In Progress" {{ $project->status == 'In Progress' ? 'selected' : '' }}>In
+                                        <option value="In Progress"
+                                            {{ $project->status == 'In Progress' ? 'selected' : '' }}>In
                                             Progress</option>
-                                        <option value="Finished" {{ $project->status == 'Finished' ? 'selected' : '' }}>Finished
+                                        <option value="Finished"
+                                            {{ $project->status == 'Finished' ? 'selected' : '' }}>Finished
                                         </option>
                                         <option value="TBD" {{ $project->status == 'TBD' ? 'selected' : '' }}>TBD
                                         </option>
-                                        <option value="Cancelled" {{ $project->status == 'Cancelled' ? 'selected' : '' }}>Cancelled
+                                        <option value="Cancelled"
+                                            {{ $project->status == 'Cancelled' ? 'selected' : '' }}>Cancelled
                                         </option>
                                     </select>
                                 </div>
@@ -167,12 +170,6 @@
 
                                 <div class="col-md-12 mb-3">
                                     <label for="project_documents[]">Uploaded Project Files</label><br>
-                                    @foreach ($project->projectDocuments as $document)
-                                        <div>
-                                            <a href="{{ asset($document->file_path) }}"
-                                                target="_blank">{{ $document->file_name }}</a>
-                                        </div>
-                                    @endforeach
                                     <input type="file" name="project_documents[]" multiple class="form-control">
                                 </div>
                                 <div class="col-md-12 mb-3">
@@ -180,6 +177,22 @@
                                 </div>
                             </div>
                         </form>
+
+                        <h5>Existing Documents</h5>
+                        <div class="row">
+                            @foreach ($project->projectDocuments as $document)
+                                <div>
+                                    <a href="{{ asset($document->file_path) }}"
+                                        target="_blank">{{ $document->file_name }}</a>
+                                </div>
+                                <form action="{{ route('admin.projects.documentDelete', $document->id) }}"
+                                    method="POST" class="mt-2">
+                                    @csrf
+                                    @method('delete')
+                                    <button name="documentDelete" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

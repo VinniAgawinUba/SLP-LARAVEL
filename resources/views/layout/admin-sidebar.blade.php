@@ -86,8 +86,8 @@
 
                 <div class="collapse" id="collapseGallery" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="">Add Gallery</a>
-                        <a class="nav-link" href="">View Gallery</a>
+                        <a class="nav-link" href="{{route('admin.galleryAdd')}}">Add Gallery</a>
+                        <a class="nav-link" href="{{route('admin.galleryView')}}">View Gallery</a>
                     </nav>
                 </div>
 
