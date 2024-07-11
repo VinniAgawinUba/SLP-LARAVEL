@@ -89,7 +89,8 @@
         width: 300px;
         height: 178px;
         color: #89A5FF;
-        background: url('{{ asset('assets/images/BGbluebook.png') }}'); /* Ensure correct path */
+        background: url('{{ asset('assets/images/BGbluebook.png') }}');
+        /* Ensure correct path */
         padding: 50px;
         padding-top: 10px;
         background-size: cover;
@@ -161,7 +162,8 @@
     }
 
     #background-image {
-        background-image: url('{{ asset('assets/images/BG.png') }}'); /* Ensure correct path */
+        background-image: url('{{ asset('assets/images/BG.png') }}');
+        /* Ensure correct path */
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -245,7 +247,7 @@
         margin-top: -50px;
     }
 
-   
+
 
     .card-body-featured {
         background: #FFFFFF;
@@ -358,33 +360,41 @@
     <div class="row gy-3" id="background-image">
         <div class="mainContent">
             <div class="row gy-3">
+
+                @foreach ($projects as $item)
                 @php
-                // Define static semesters
-                $semesters = array("1st Semester", "2nd Semester", "Intersession");
+                $project_id = $item->id
                 @endphp
-                @foreach ($semesters as $key => $semester)
-                    @php
-                    $card_id = 'semester_' . ($key + 1);
-                    $semester_id = $key + 1;
-                    @endphp
                     <div class="col-md-4 mb-6 gy-3" style="display: flex; justify-content: center;" id="three-columns">
                         <!-- Add a unique ID to each semester card and attach a click event -->
-                        <a href="{{ url("projects/$school_year_id/$semester_id")}}">
-                        <div class="year" id="{{ $card_id }}" style="background: url('{{ asset('assets/images/BGblueBook.png') }}');">
-                            <div class="card-body">
-                                <h5 class="card-title text-white text-center"></h5>
-                                <p class="card-text text-center" id="semester-font-style">{{ $semester }}</p>
-                                <!-- You can add more project details here -->
+                        <a href="{{ url("/projectview/{$project_id}") }}">
+                            <div class="year" id="{{ $item->id }}"
+                                style="background: url('{{ asset('assets/images/BGblueBook.png') }}');">
+                                <div class="card-body">
+                                    <h5 class="card-title text-white text-center"></h5>
+                                    <p class="card-text text-center" id="semester-font-style">{{ $item->name }}</p>
+                                </div>
                             </div>
-                        </div>
                         </a>
                     </div>
                 @endforeach
+
+                @if ($projects->isEmpty())
+                    <div class="col-md-12 mb-6 gy-3" style="display: flex; justify-content: center;">
+                        <div class="year" id="year"
+                            style="background: url('{{ asset('assets/images/BGblueBook.png') }}');">
+                            <div class="card-body">
+                                <h5 class="card-title text-white text-center"></h5>
+                                <p class="card-text text-center" id="semester-font-style">No projects
+                                    found</p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
-</div>
 
 
-@include('layout.footer')
-@include('layout.scripts')
+    @include('layout.footer')
+    @include('layout.scripts')

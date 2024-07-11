@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class college extends Model
 {
-    protected $table = 'college';
+    protected $table = 'colleges';
     protected $fillable = ['name', 'dean_id', 'logo_image'];
     public function departments()
     {

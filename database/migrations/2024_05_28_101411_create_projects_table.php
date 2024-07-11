@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -26,6 +27,55 @@ return new class extends Migration
             $table->boolean('featured')->default(false);
             $table->timestamps();
         });
+
+        //Insert some data
+        DB::table('projects')->insert([
+            [
+                'name' => 'Project 1',
+                'description' => 'Description of Project 1',
+                'sl_type' => 'Service',
+                'college_id' => 1,
+                'department_id' => 1,
+                'sd_coordinator_id' => 1,
+                'partner_id' => 1,
+                'school_year_id' => 1,
+                'semester' => 1,
+                'status' => 'In Progress',
+                'featured' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Project 2',
+                'description' => 'Description of Project 2',
+                'sl_type' => 'Outreach',
+                'college_id' => 2,
+                'department_id' => 2,
+                'sd_coordinator_id' => 2,
+                'partner_id' => 2,
+                'school_year_id' => 2,
+                'semester' => 2,
+                'status' => 'Finished',
+                'featured' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Project 3',
+                'description' => 'Description of Project 3',
+                'sl_type' => 'Output',
+                'college_id' => 3,
+                'department_id' => 3,
+                'sd_coordinator_id' => 3,
+                'partner_id' => 3,
+                'school_year_id' => 3,
+                'semester' => 3,
+                'status' => 'TBD',
+                'featured' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
     }
 
     /**
