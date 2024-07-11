@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class projects extends Model
 {
@@ -22,5 +24,20 @@ class projects extends Model
     public function department()
     {
         return $this->belongsTo(department::class);
+    }
+
+    public function faculties(): BelongsToMany
+    {
+        return $this->belongsToMany(faculty::class, 'project_faculty', 'project_id', 'faculty_id');
+    }
+
+      public function projectDocuments(): HasMany
+    {
+        return $this->hasMany(project_documents::class, 'project_id');
+    }
+
+    public function projectSdgs(): HasMany
+    {
+        return $this->hasMany(project_sdgs::class, 'project_id');
     }
 }

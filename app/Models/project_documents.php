@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class project_documents extends Model
 {
-    use HasFactory;
+    protected $table = 'project_documents';
+    protected $fillable = ['project_id', 'file_name', 'file_type', 'file_size', 'file_path'];
+    public $timestamps = false;
 }

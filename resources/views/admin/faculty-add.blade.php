@@ -79,5 +79,5 @@
 @include('layout.admin-footer')
 @include('layout.scripts')
 @else
-<script>window.location.href = '/home';</script>
+<script>window.location.href = '/';</script>
 @endif

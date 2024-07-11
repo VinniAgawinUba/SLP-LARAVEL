@@ -14,6 +14,20 @@
                     Dashboard
                 </a>
 
+                <!--- Projects -->
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProjects" aria-expanded="false" aria-controls="collapseProjects">
+                    <div class="sb-nav-link-icon"><i class="fas fa-project-diagram"></i></div>
+                    Projects
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                
+                <div class="collapse" id="collapseProjects" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{route('admin.projectsAdd')}}">Add Projects</a>
+                        <a class="nav-link" href="{{route('admin.projectsView')}}">View Projects</a>
+                    </nav>
+                </div>
+
                 @if(auth()->check() && in_array(auth()->user()->auth_role, ['super']))
                     <a class="nav-link" href="{{route('admin.registerView')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>

@@ -16,14 +16,16 @@ return new class extends Migration
             $table->id();
             $table->string('name', 191);
             $table->text('description');
-            $table->enum('sl_type', ['Service', 'Outreach', 'Output']);
+            $table->string('sl_type', 191);
+            $table->string('subject_hosted')->nullable();
+            $table->unsignedBigInteger('number_of_students')->nullable();
             $table->unsignedBigInteger('college_id');
             $table->unsignedBigInteger('department_id');
             $table->unsignedBigInteger('sd_coordinator_id');
             $table->unsignedBigInteger('partner_id');
             $table->unsignedBigInteger('school_year_id');
             $table->integer('semester');
-            $table->enum('status', ['In Progress', 'Finished', 'TBD', 'Cancelled']);
+            $table->string('status', 191);
             $table->boolean('featured')->default(false);
             $table->timestamps();
         });
@@ -34,6 +36,8 @@ return new class extends Migration
                 'name' => 'Project 1',
                 'description' => 'Description of Project 1',
                 'sl_type' => 'Service',
+                'subject_hosted' => 'Subject Hosted 1',
+                'number_of_students' => 10,
                 'college_id' => 1,
                 'department_id' => 1,
                 'sd_coordinator_id' => 1,
@@ -49,6 +53,8 @@ return new class extends Migration
                 'name' => 'Project 2',
                 'description' => 'Description of Project 2',
                 'sl_type' => 'Outreach',
+                'subject_hosted' => 'Subject Hosted 2',
+                'number_of_students' => 20,
                 'college_id' => 2,
                 'department_id' => 26,
                 'sd_coordinator_id' => 2,
@@ -64,6 +70,8 @@ return new class extends Migration
                 'name' => 'Project 3',
                 'description' => 'Description of Project 3',
                 'sl_type' => 'Output',
+                'subject_hosted' => 'Subject Hosted 3',
+                'number_of_students' => 30,
                 'college_id' => 3,
                 'department_id' => 3,
                 'sd_coordinator_id' => 3,

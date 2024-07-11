@@ -55,6 +55,14 @@ Route::get('/admin/register/edit/{id}', [RegisteredUserController::class, 'Regis
 Route::put('/admin/register/update/{id}', [RegisteredUserController::class, 'registerUpdate'])->name('admin.registerUpdate');
 Route::post('/admin/register/delete', [RegisteredUserController::class, 'registerDelete'])->name('admin.registerDelete');
 
+//Admin Projects
+Route::get('/admin/projects/view', [ProjectsController::class, 'ProjectsView'])->name('admin.projectsView');
+Route::get('/admin/projects/add', [ProjectsController::class, 'ProjectsAdd'])->name('admin.projectsAdd');
+Route::post('/admin/projects/add', [ProjectsController::class, 'ProjectsInsert'])->name('admin.projectsInsert');
+Route::get('/admin/projects/edit/{id}', [ProjectsController::class, 'ProjectsEdit'])->name('admin.projectsEdit');
+Route::post('/admin/projects/update/{id}', [ProjectsController::class, 'ProjectsUpdate'])->name('admin.projectsUpdate');
+Route::post('/admin/projects/delete/{id}', [ProjectsController::class, 'ProjectsDelete'])->name('admin.projectsDelete');
+
 //Admin Faculty
 Route::get('/admin/faculty/view', [FacultiesController::class, 'FacultyView'])->name('admin.facultyView');
 Route::get('/admin/faculty/add', [FacultiesController::class, 'FacultyAdd'])->name('admin.facultyAdd');

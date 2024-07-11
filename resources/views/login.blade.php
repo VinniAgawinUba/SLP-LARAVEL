@@ -1,7 +1,7 @@
 @include('layout.header')
 @include('layout.navbar')
 {{-- @include('layout.footer') --}}
-
+<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 
 
 {{-- Header Section--}}
