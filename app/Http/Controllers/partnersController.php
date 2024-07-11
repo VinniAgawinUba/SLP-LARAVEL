@@ -85,11 +85,11 @@ class PartnersController extends Controller
             if ($partner->logo_image && file_exists(public_path($partner->logo_image))) {
                 unlink(public_path($partner->logo_image));
             }
-        if ($request->hasFile('logo_image')) {
-            $image = $request->file('logo_image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('assets/uploads/partner_logos'), $imageName);
-            $validatedData['logo_image'] = $imageName;
+            if ($request->hasFile('logo_image')) {
+                $image = $request->file('logo_image');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('assets/uploads/partner_logos'), $imageName);
+                $validatedData['logo_image'] = $imageName;
             }
         }
 
@@ -104,8 +104,18 @@ class PartnersController extends Controller
 
     public function PartnersDelete(Request $request, $id)
     {
-       // Find the Faculty model to delete
-       $partner = partners::find($request->id);
+        // Find the Faculty model to delete
+        $partner = partners::find($request->id);
+
+        if (!$partner) {
+            // If the partner model is not found, redirect with an error message
+            return redirect()->route('admin.facultyView')->with('error', 'Partner not found!');
+        }
+
+        // Check if the faculty has an old image and delete it
+        if ($partner->logo_image && file_exists(public_path($partner->logo_image))) {
+            unlink(public_path($partner->logo_image));
+        }
 
         // Delete the Partner model instance
         $partner->delete();
