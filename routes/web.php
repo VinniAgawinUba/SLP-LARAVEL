@@ -32,7 +32,8 @@ Route::get('/projects/{school_year_id}/{semester_id}/{college_id}/{department_id
 Route::get('/projectview/{project_id}', [ProjectsController::class, 'showprojectview'])->name('projects.show_project_view');
 
 //Articles
-Route::get('/articles', [PageController::class, 'articles'])->name('articles');
+Route::get('/articles', [ArticlesController::class, 'articles'])->name('articles');
+Route::get('/articles/{article_id}', [ArticlesController::class, 'article'])->name('article');
 
 //Gallery
 Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');

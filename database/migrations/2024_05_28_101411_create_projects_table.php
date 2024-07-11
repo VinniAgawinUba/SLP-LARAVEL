@@ -50,7 +50,7 @@ return new class extends Migration
                 'description' => 'Description of Project 2',
                 'sl_type' => 'Outreach',
                 'college_id' => 2,
-                'department_id' => 2,
+                'department_id' => 26,
                 'sd_coordinator_id' => 2,
                 'partner_id' => 2,
                 'school_year_id' => 2,
