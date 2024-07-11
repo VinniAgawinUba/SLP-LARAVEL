@@ -36,6 +36,6 @@ Route::get('/articles', [ArticlesController::class, 'articles'])->name('articles
 Route::get('/articles/{article_id}', [ArticlesController::class, 'article'])->name('article');
 
 //Gallery
-Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');
+Route::get('/gallery', [GalleriesController::class, 'gallery'])->name('gallery');
 
 //Admin Panel
