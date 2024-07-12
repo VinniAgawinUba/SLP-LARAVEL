@@ -1,4 +1,4 @@
-@if(auth()->check() && in_array(auth()->user()->auth_role, ['super', 'skilled', 'custodial', 'cworker', 'sworker']))
+@if(auth()->check() && in_array(auth()->user()->auth_role, ['super', 'admin']))
 @include('layout.admin-header')
 @include('shared.success-message')
 @include('shared.error-message')

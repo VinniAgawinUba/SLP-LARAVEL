@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
 
-@if(auth()->check() && in_array(auth()->user()->auth_role, ['super', 'skilled', 'custodial', 'cworker', 'sworker']))
+@if(auth()->check() && in_array(auth()->user()->auth_role, ['super', 'admin']))
 @include('layout.admin-header')
 @include('shared.success-message')
 @include('shared.error-message')
