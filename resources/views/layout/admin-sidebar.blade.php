@@ -109,8 +109,8 @@
                         </a>
                         <div class="collapse" id="pagesCollapseColleges" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="">Add Colleges</a>
-                                <a class="nav-link" href="">View Colleges</a>
+                                <a class="nav-link" href="{{route('admin.collegesAdd')}}">Add Colleges</a>
+                                <a class="nav-link" href="{{route('admin.collegesView')}}">View Colleges</a>
                             </nav>
                         </div>
 

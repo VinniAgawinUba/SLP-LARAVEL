@@ -23,7 +23,7 @@ return new class extends Migration
         // Insert some data
         DB::table('colleges')->insert([
             ['name' => 'College of Computer Studies', 'dean_id' => 1, 'logo_image' => '1714640756.jpg'],
-            ['name' => 'College of Nursing', 'dean_id' => 2, 'logo_image' => 'science.png'],
+            ['name' => 'College of Nursing', 'dean_id' => 2, 'logo_image' => 'seal_nursing.jpg'],
             ['name' => 'College of Engineering', 'dean_id' => 3, 'logo_image' => '1714640590.jpg'],
             ['name' => 'College of Agriculture', 'dean_id' => 4, 'logo_image' => '1714640218.png'],
             ['name' => 'College of Arts and Sciences', 'dean_id' => 5, 'logo_image' => '1714640015.jpg'],

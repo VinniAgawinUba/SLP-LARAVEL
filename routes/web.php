@@ -96,3 +96,13 @@ Route::get('/admin/gallery/edit/{id}', [GalleriesController::class, 'GalleryEdit
 Route::post('/admin/gallery/update/{id}', [GalleriesController::class, 'GalleryUpdate'])->name('admin.galleryUpdate');
 Route::post('/admin/gallery/delete/{id}', [GalleriesController::class, 'GalleryDelete'])->name('admin.galleryDelete');
 Route::delete('/admin/photo-delete/{id}', [GalleriesController::class, 'PhotoDelete'])->name('admin.photoDelete');
+
+//Admin Colleges
+Route::get('/admin/colleges/view', [CollegesController::class, 'CollegesView'])->name('admin.collegesView');
+Route::get('/admin/colleges/add', [CollegesController::class, 'CollegesAdd'])->name('admin.collegesAdd');
+Route::post('/admin/colleges/add', [CollegesController::class, 'CollegesInsert'])->name('admin.collegesInsert');
+Route::get('/admin/colleges/edit/{id}', [CollegesController::class, 'CollegesEdit'])->name('admin.collegesEdit');
+Route::post('/admin/colleges/update/{id}', [CollegesController::class, 'CollegesUpdate'])->name('admin.collegesUpdate');
+Route::post('/admin/colleges/delete/{id}', [CollegesController::class, 'CollegesDelete'])->name('admin.collegesDelete');
+
+//Admin School Years

@@ -17,4 +17,9 @@ class college extends Model
     {
         return $this->hasMany(projects::class);
     }
+
+    public function dean()
+    {
+        return $this->belongsTo(faculty::class, 'dean_id');
+    }
 }
