@@ -29,13 +29,13 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 //Partners
 Route::get('/partners', [PartnersController::class, 'Frontpage_partners'])->name('frontpage_partners');
 
-//Projects
+//Frontpage Projects
 Route::get('/projects', [ProjectsController::class, 'index'])->name('frontpage_projects');
 Route::get('/projects/{school_year_id}', [ProjectsController::class, 'showsemester'])->name('projects.show_semester');
 Route::get('/projects/{school_year_id}/{semester_id}', [ProjectsController::class, 'showcollege'])->name('projects.show_college');
 Route::get('/projects/{school_year_id}/{semester_id}/{college_id}', [ProjectsController::class, 'showdepartment'])->name('projects.show_department');
 Route::get('/projects/{school_year_id}/{semester_id}/{college_id}/{department_id}', [ProjectsController::class, 'showproject'])->name('projects.show_project');
-Route::get('/projectview/{project_id}', [ProjectsController::class, 'showprojectview'])->name('projects.show_project_view');
+Route::get('/projectview/{project_id}', [ProjectsController::class, 'showprojectDetails'])->name('projects.show_project_view');
 
 //Articles
 Route::get('/articles', [ArticlesController::class, 'articles'])->name('articles');
@@ -43,6 +43,9 @@ Route::get('/articles/{article_id}', [ArticlesController::class, 'article'])->na
 
 //Gallery
 Route::get('/gallery', [GalleriesController::class, 'gallery'])->name('gallery');
+
+
+
 
 //Admin Panel
 Route::get('/admin', [PageController::class, 'admin'])->name('admin');

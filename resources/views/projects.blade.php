@@ -360,7 +360,7 @@
                 <div class="row gy-3">
                    
                     @php
-                        $school_years = DB::table('school_years')->get();
+                        $school_years = DB::table('school_years')->orderBy('school_year', 'desc')->get();
                     @endphp
                     @if($school_years->isNotEmpty())
                         @foreach ($school_years as $item)
@@ -369,8 +369,8 @@
                             <div class="year" id="school_year_{{ $item->id }}" style="text-align: center; justify-content: center;">
                                 <div class="card-body">
                                     <!-- <h5 class="card-title text-white text-center"></h5> -->
-                                    {{ $item->id }}
-                                    <p class="card-text text-center" id="year-font-style"><span id="sy">SY</span> <br>{{$item->school_year}}</p>
+                                    <span id="sy">SY</span>
+                                    <p class="card-text text-center" id="year-font-style">{{$item->school_year}}</p>
                                 </div>
                             </div>
                         </a>

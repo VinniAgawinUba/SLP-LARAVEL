@@ -12,6 +12,7 @@ use App\Models\partners;
 use App\Models\project_documents;
 use App\Models\project_sdgs;
 use App\Models\gallery;
+use App\Models\gallery_photos;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectsController extends Controller
@@ -19,7 +20,7 @@ class ProjectsController extends Controller
     //Frontpage Side
     public function index(Request $request)
     {
-        $schoolYears = school_year::all();
+        $schoolYears = school_year::orderBy('school_year', 'desc')->get();
         return view('projects', ['schoolYears' => $schoolYears]);
     }
 
@@ -85,13 +86,33 @@ class ProjectsController extends Controller
     }
 
 
+    public function showprojectDetails($project_id)
+{
+    $project = projects::with(['schoolYear', 'college', 'department', 'faculties', 'projectSdgs'])
+        ->where('id', $project_id)
+        ->first();
 
-
-    public function showprojectview(Request $request, $project_id)
-    {
-        $projects = projects::where('id', $project_id)->get();
-        return view('projects.show_projectview');
+    if (!$project) {
+        return view('projects.show_project-details', ['project' => null]);
     }
+
+     // Fetch the first gallery photo
+     $photo = gallery_photos::where('project_id', $project_id)->first();
+    $college = $project->college;
+    $department = $project->department;
+    //Find partner in partners table
+    $partner = partners::find($project->partner_id);
+    $schoolYear = $project->schoolYear;
+    $dean = $college ? faculty::find($college->dean_id) : null;
+    $involvedFaculties = $project->faculties;
+    $sdgs = $project->projectSdgs->pluck('sdg');
+
+    return view('projects.show_project-details', compact('project', 'photo', 'college', 'department', 'partner', 'schoolYear', 'dean', 'involvedFaculties', 'sdgs'));
+}
+
+
+
+
 
 
 
@@ -280,6 +301,7 @@ class ProjectsController extends Controller
         
 
             // Add new documents
+            if ($request->hasFile('project_documents')){
             foreach ($request->file('project_documents') as $document) {
                 $path = $document->store('project_documents');
                 $projectDocument = new project_documents();
@@ -290,6 +312,7 @@ class ProjectsController extends Controller
                 $projectDocument->file_path = $path;
                 $projectDocument->save();
             }
+        }
 
         return redirect()->route('admin.projectsView')->with('success', 'Project updated successfully!');
     }

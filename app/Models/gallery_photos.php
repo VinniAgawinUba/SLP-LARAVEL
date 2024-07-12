@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class gallery_photos extends Model
 {
@@ -13,4 +14,5 @@ class gallery_photos extends Model
     {
         return $this->belongsTo(gallery::class);
     }
+
 }
