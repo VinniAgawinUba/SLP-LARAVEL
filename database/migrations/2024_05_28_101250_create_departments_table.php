@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 191);
             $table->unsignedBigInteger('college_id');
-            $table->string('college_name');
+            $table->string('college_name')->nullable();
             $table->timestamps();
         });
 
@@ -27,11 +27,11 @@ return new class extends Migration
             ['id' => 3, 'name' => 'Electronics Communication Engineering', 'college_id' => 3, 'college_name' => ''],
             ['id' => 4, 'name' => 'Information Systems', 'college_id' => 1, 'college_name' => 'College of Computer Studies'],
             ['id' => 7, 'name' => 'Entertainment and Multimedia Computing', 'college_id' => 1, 'college_name' => ''],
-            ['id' => 8, 'name' => 'Elementary Education', 'college_id' => 8, 'college_name' => ''],
-            ['id' => 9, 'name' => 'Early Childhood Education', 'college_id' => 8, 'college_name' => ''],
-            ['id' => 10, 'name' => 'Special Needs Education', 'college_id' => 8, 'college_name' => ''],
-            ['id' => 11, 'name' => 'Secondary Education', 'college_id' => 8, 'college_name' => ''],
-            ['id' => 16, 'name' => 'Business Administration', 'college_id' => 7, 'college_name' => ''],
+            ['id' => 8, 'name' => 'Elementary Education', 'college_id' => 7, 'college_name' => ''],
+            ['id' => 9, 'name' => 'Early Childhood Education', 'college_id' => 7, 'college_name' => ''],
+            ['id' => 10, 'name' => 'Special Needs Education', 'college_id' => 7, 'college_name' => ''],
+            ['id' => 11, 'name' => 'Secondary Education', 'college_id' => 7, 'college_name' => ''],
+            ['id' => 16, 'name' => 'Business Administration', 'college_id' => 6, 'college_name' => ''],
             ['id' => 17, 'name' => 'Industrial Engineering', 'college_id' => 3, 'college_name' => ''],
             ['id' => 18, 'name' => 'Chemical Engineering', 'college_id' => 3, 'college_name' => ''],
             ['id' => 19, 'name' => 'Mechanical Engineering', 'college_id' => 3, 'college_name' => ''],

@@ -105,4 +105,12 @@ Route::get('/admin/colleges/edit/{id}', [CollegesController::class, 'CollegesEdi
 Route::post('/admin/colleges/update/{id}', [CollegesController::class, 'CollegesUpdate'])->name('admin.collegesUpdate');
 Route::post('/admin/colleges/delete/{id}', [CollegesController::class, 'CollegesDelete'])->name('admin.collegesDelete');
 
+//Admin Departments
+Route::get('/admin/departments/view', [DepartmentsController::class, 'DepartmentsView'])->name('admin.departmentsView');
+Route::get('/admin/departments/add', [DepartmentsController::class, 'DepartmentsAdd'])->name('admin.departmentsAdd');
+Route::post('/admin/departments/add', [DepartmentsController::class, 'DepartmentsInsert'])->name('admin.departmentsInsert');
+Route::get('/admin/departments/edit/{id}', [DepartmentsController::class, 'DepartmentsEdit'])->name('admin.departmentsEdit');
+Route::post('/admin/departments/update/{id}', [DepartmentsController::class, 'DepartmentsUpdate'])->name('admin.departmentsUpdate');
+Route::post('/admin/departments/delete/{id}', [DepartmentsController::class, 'DepartmentsDelete'])->name('admin.departmentsDelete');
+
 //Admin School Years

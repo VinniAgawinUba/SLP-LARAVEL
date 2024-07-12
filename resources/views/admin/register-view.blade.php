@@ -21,7 +21,7 @@
                     </h4>
                 </div>
                 <div class="card-body">
-                    <table id="myUsers" class="table table-bordered">
+                    <table id="myUsers" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>

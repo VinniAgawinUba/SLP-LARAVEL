@@ -129,7 +129,7 @@
                                     </a>
                                     <ul class="dropdown-menu text-center customfont" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item customfont font-style" href="#">My Profile</a></li>
-                                        @if(auth()->check() && in_array(auth()->user()->auth_role, ['super']))
+                                        @if(auth()->check() && in_array(auth()->user()->auth_role, ['super']) || auth()->check() && in_array(auth()->user()->auth_role, ['admin'])
                                             <li><a class="dropdown-item" href="{{ route('admin') }}">Admin Panel</a></li>
                                         @endif
                                         <li>

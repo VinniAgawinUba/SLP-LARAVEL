@@ -11,7 +11,7 @@ class department extends Model
 
     public function college()
     {
-        return $this->belongsTo(college::class);
+        return $this->belongsTo(college::class, 'college_id', 'id');
     }
 
     public function projects()
