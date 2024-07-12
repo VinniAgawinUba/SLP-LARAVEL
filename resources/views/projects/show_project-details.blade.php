@@ -211,26 +211,7 @@
                                             @default #6c757d
                                         @endswitch;">
                                     Status:
-                                    @switch($project->status)
-                                        @case(0)
-                                            Ongoing
-                                        @break
-
-                                        @case(1)
-                                            Finished
-                                        @break
-
-                                        @case(2)
-                                            TBD
-                                        @break
-
-                                        @case(3)
-                                            Cancelled
-                                        @break
-
-                                        @default
-                                            Unknown Status
-                                    @endswitch
+                                   {{ $project->status}}
                                 </p>
                                 <p class="text-description">{{ $project->description }}</p>
                             </div>
