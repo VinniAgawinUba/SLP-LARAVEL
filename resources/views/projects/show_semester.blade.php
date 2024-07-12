@@ -79,19 +79,18 @@
     }
 
     .year {
+        padding: 10px;
         border-radius: 20px;
-        margin-top: 30px;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         font-size: 30px;
         line-height: 36px;
+        height: 200px;
         width: 300px;
-        height: 178px;
         color: #89A5FF;
-        background: url('{{ asset('assets/images/BGbluebook.png') }}'); /* Ensure correct path */
-        padding: 50px;
-        padding-top: 10px;
+        background: url('{{ asset('assets/images/BGbluebook.png') }}');
+        /* Ensure correct path */
         background-size: cover;
         background-position: center;
     }

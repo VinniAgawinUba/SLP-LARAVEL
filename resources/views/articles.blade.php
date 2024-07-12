@@ -349,7 +349,7 @@
         margin-right: -3px;
     }
 </style>
-<h4 class="header">Articles</h4>
+<h4 class="header">ARTICLES</h4>
 <hr class="horizontal-line">
 @include('shared.success-message')
 @include('shared.error-message')
