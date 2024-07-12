@@ -8,11 +8,22 @@ use App\Models\type;
 
 class PartnersController extends Controller
 {
+    //Frontpage Side
     public function Frontpage_partners()
     {
         $partners = partners::all();
         return view('partners', ['partners_list' => $partners]);
     }
+
+    public function Partner_details($partner_id)
+    {
+        $partner = partners::find($partner_id);
+        return view('partner-details', ['partner' => $partner]);
+    }
+
+
+
+    //Admin Panel Side
     public function PartnersView()
     {
         $partners = partners::all();

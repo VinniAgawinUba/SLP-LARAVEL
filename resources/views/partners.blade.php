@@ -195,7 +195,7 @@
                     @foreach ($partners_list->where('featured', 1)->where('type_id', 1) as $item)
                         <div class='col-md-4'>
                             <div class="card card-box">
-                                <a href="{{ url('partner-view', $item->id) }}"
+                                <a href="{{ route('partner-details', $item->id) }}"
                                     style="text-decoration: none; color: inherit;">
                                     <div class="card-content">
                                         <img src="{{ asset('assets/uploads/partner_logos/' . $item->logo_image) }}" class="customPic">
@@ -220,7 +220,7 @@
                     @foreach ($partners_list->where('featured', 1)->where('type_id', 2) as $item)
                         <div class='col-md-4'>
                             <div class="card card-box">
-                                <a href="{{ url('partner-view', $item->id) }}"
+                                <a href="{{ route('partner-details', $item->id) }}"
                                     style="text-decoration: none; color: inherit;">
                                     <div class="card-content">
                                         <img src="{{ asset('assets/uploads/partner_logos/' . $item->logo_image) }}"
@@ -244,7 +244,7 @@
                     @foreach ($partners_list->where('featured', 1)->where('type_id', 3) as $item)
                         <div class='col-md-4'>
                             <div class="card card-box">
-                                <a href="{{ url('partner-view', $item->id) }}"
+                                <a href="{{ route('partner-details', $item->id) }}"
                                     style="text-decoration: none; color: inherit;">
                                     <div class="card-content">
                                         <img src="{{ asset('assets/uploads/partner_logos/' . $item->logo_image) }}"
@@ -268,7 +268,7 @@
                     @foreach ($partners_list->where('featured', 1)->where('type_id', 4) as $item)
                         <div class='col-md-4'>
                             <div class="card card-box">
-                                <a href="{{ url('partner-view', $item->id) }}"
+                                <a href="{{ route('partner-details', $item->id) }}"
                                     style="text-decoration: none; color: inherit;">
                                     <div class="card-content">
                                         <img src="{{ asset('assets/uploads/partner_logos/' . $item->logo_image) }}"
@@ -292,7 +292,7 @@
                     @foreach ($partners_list->where('featured', 1)->where('type_id', 5) as $item)
                         <div class='col-md-4'>
                             <div class="card card-box">
-                                <a href="{{ url('partner-view', $item->id) }}"
+                                <a href="{{ route('partner-details', $item->id) }}"
                                     style="text-decoration: none; color: inherit;">
                                     <div class="card-content">
                                         <img src="{{ asset('assets/uploads/partner_logos/' . $item->logo_image) }}"
@@ -316,7 +316,7 @@
                     @foreach ($partners_list->where('featured', 1)->where('type_id', 6) as $item)
                         <div class='col-md-4'>
                             <div class="card card-box">
-                                <a href="{{ url('partner-view', $item->id) }}"
+                                <a href="{{ route('partner-details', $item->id) }}"
                                     style="text-decoration: none; color: inherit;">
                                     <div class="card-content">
                                         <img src="{{ asset('assets/uploads/partner_logos/' . $item->logo_image) }}"
@@ -340,7 +340,7 @@
                     @foreach ($partners_list->where('featured', 1)->where('type_id', 7) as $item)
                         <div class='col-md-4'>
                             <div class="card card-box">
-                                <a href="{{ url('partner-view', $item->id) }}"
+                                <a href="{{ route('partner-details', $item->id) }}"
                                     style="text-decoration: none; color: inherit;">
                                     <div class="card-content">
                                         <img src="{{ asset('assets/uploads/partner_logos/' . $item->logo_image) }}"
@@ -363,7 +363,7 @@
                     @foreach ($partners_list->where('featured', 1)->where('type_id', 8) as $item)
                         <div class='col-md-4'>
                             <div class="card card-box">
-                                <a href="{{ url('partner-view', $item->id) }}"
+                                <a href="{{ route('partner-details', $item->id) }}"
                                     style="text-decoration: none; color: inherit;">
                                     <div class="card-content">
                                         <img src="{{ asset('assets/uploads/partner_logos/' . $item->logo_image) }}"

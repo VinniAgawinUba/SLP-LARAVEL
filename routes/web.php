@@ -31,6 +31,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Partners
 Route::get('/partners', [PartnersController::class, 'Frontpage_partners'])->name('frontpage_partners');
+Route::get('/partners/{partner_id}', [PartnersController::class, 'Partner_details'])->name('partner-details');
 
 //Frontpage Projects
 Route::get('/projects', [ProjectsController::class, 'index'])->name('frontpage_projects');
