@@ -20,16 +20,18 @@ return new class extends Migration
 
         // Insert some data
         DB::table('school_years')->insert([
+            ['school_year' => '2015-2016'],
+            ['school_year' => '2016-2017'],
+            ['school_year' => '2017-2018'],
+            ['school_year' => '2018-2019'],
+            ['school_year' => '2019-2020'],
             ['school_year' => '2020-2021'],
             ['school_year' => '2021-2022'],
             ['school_year' => '2022-2023'],
             ['school_year' => '2023-2024'],
             ['school_year' => '2024-2025'],
             ['school_year' => '2025-2026'],
-            ['school_year' => '2026-2027'],
-            ['school_year' => '2027-2028'],
-            ['school_year' => '2028-2029'],
-            ['school_year' => '2029-2030'],
+            // Add more years if needed
         ]);
     }
 

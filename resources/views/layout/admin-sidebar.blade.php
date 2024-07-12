@@ -127,8 +127,8 @@
                         </div>
 
                         <!--  📅 routing to school year view -->
-                        <a class="nav-link" href="">
-                            <div class="sb-nav-link-icon" style="margin-right: 10px;"><i class="fas fa-calendar"></i></div>
+                        <a class="nav-link" href="{{route('admin.schoolYearsView')}}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-calendar"></i></div>
                             School Years
                         </a>
                     </nav>
