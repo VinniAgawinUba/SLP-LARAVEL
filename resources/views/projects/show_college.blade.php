@@ -79,20 +79,18 @@
     }
 
     .year {
+        padding: 10px;
         border-radius: 20px;
-        margin-top: 30px;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         font-size: 30px;
         line-height: 36px;
+        height: 200px;
         width: 300px;
-        height: 178px;
         color: #89A5FF;
         background: url('{{ asset('assets/images/BGbluebook.png') }}');
         /* Ensure correct path */
-        padding: 50px;
-        padding-top: 10px;
         background-size: cover;
         background-position: center;
     }
@@ -165,10 +163,7 @@
         background-image: url('{{ asset('assets/images/BG.png') }}');
         /* Ensure correct path */
         background-size: cover;
-        background-position: center;
         background-repeat: no-repeat;
-        height: 70vw;
-        object-fit: contain;
     }
 
     body {
@@ -350,8 +345,13 @@
         text-transform: uppercase;
         margin-right: -3px;
     }
+
+    a {
+        text-decoration: none;
+
+    }
 </style>
-<h4 class="header">Projects</h4>
+<h4 class="header">PROJECTS</h4>
 <hr class="horizontal-line">
 @include('shared.success-message')
 @include('shared.error-message')
@@ -362,9 +362,9 @@
             <div class="row gy-3">
 
                 @foreach ($colleges as $item)
-                @php
-                $college_id = $item->id
-                @endphp
+                    @php
+                        $college_id = $item->id;
+                    @endphp
                     <div class="col-md-4 mb-6 gy-3" style="display: flex; justify-content: center;" id="three-columns">
                         <!-- Add a unique ID to each semester card and attach a click event -->
                         <a href="{{ url("projects/$school_year_id/$semester_id/$college_id") }}">
@@ -393,8 +393,9 @@
                 @endif
             </div>
         </div>
+        {{ $colleges->links('pagination::bootstrap-5') }}
     </div>
+</div>
 
 
-    @include('layout.footer')
-    @include('layout.scripts')
+@include('layout.footer')

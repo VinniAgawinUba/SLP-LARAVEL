@@ -20,6 +20,7 @@
         align-items: center;
     }
 
+
     #textfield {
         width: 40%;
         margin-left: auto;
@@ -79,20 +80,18 @@
     }
 
     .year {
+        padding: 10px;
         border-radius: 20px;
-        margin-top: 30px;
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         font-size: 30px;
         line-height: 36px;
+        height: 200px;
         width: 300px;
-        height: 178px;
         color: #89A5FF;
         background: url('{{ asset('assets/images/BGbluebook.png') }}');
         /* Ensure correct path */
-        padding: 50px;
-        padding-top: 10px;
         background-size: cover;
         background-position: center;
     }
@@ -117,58 +116,11 @@
         padding-bottom: 30px;
     }
 
-    #semester-font-style {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 160px;
-        font-size: 36px;
-    }
-
-    #college-font-style {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 160px;
-        font-size: 36px;
-    }
-
-    #department-font-style {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 160px;
-        font-size: 36px;
-    }
-
-    #projects-font-style {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 160px;
-        font-size: 36px;
-    }
-
-    #project-card {
-        box-sizing: border-box;
-        background: #FFFFFF;
-        border-radius: 10px;
-        width: 222px;
-        height: auto;
-    }
-
     #background-image {
         background-image: url('{{ asset('assets/images/BG.png') }}');
         /* Ensure correct path */
         background-size: cover;
-        background-position: center;
         background-repeat: no-repeat;
-        height: 70vw;
-        object-fit: contain;
     }
 
     body {
@@ -176,60 +128,14 @@
         margin-right: 100px;
     }
 
-    .school-year-header {
-        display: flex;
-        background-color: #A19158;
-        padding: 15px 0;
-        margin-left: -12px;
-        margin-right: -12px;
-        margin-top: -20px;
-        justify-content: left;
-        align-items: left;
-        border-radius: 5px;
-    }
-
-    #year-header {
-        padding: 20px;
-        margin-left: 100px;
+    #sy {
         font-family: 'Inter';
         font-style: normal;
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 39px;
-        color: #FFFFFF;
-    }
-
-    #sy {
         font-weight: 700;
         font-size: 20px;
-        line-height: 16px;
-        text-align: center;
-        font-style: normal;
-        color: #5C80FA;
-        mix-blend-mode: normal;
-    }
-
-    #college-of {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 13px;
-        line-height: 16px;
-        text-align: center;
-        letter-spacing: 0.205em;
-        color: #5C80FA;
-        mix-blend-mode: normal;
-    }
-
-    .header-container {
-        display: flex;
-        background-color: #A19158;
-        padding: 15px 0;
-        margin-left: -12px;
-        margin-right: -12px;
-        justify-content: left;
-        align-items: left;
-        border-radius: 5px;
+        line-height: 24px;
+        color: #89A5FF;
+        ;
     }
 
     #featured-header {
@@ -248,13 +154,6 @@
     }
 
 
-
-    .card-body-featured {
-        background: #FFFFFF;
-        border-radius: 10px;
-        width: 303px;
-        height: 475px;
-    }
 
     .hidden {
         display: none;
@@ -293,65 +192,11 @@
         height: 25em;
     }
 
-    .card-title-featured {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 19px;
-        padding: 10px;
-        color: #000000;
-    }
-
-    .card-description-featured {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 15px;
-        height: 41.75px;
-        padding-left: 10px;
-        margin-top: -10px;
-        color: #000000;
-    }
-
-    .card-title-projects {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 19px;
-        color: #000000;
-    }
-
-    .card-text-projects {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 15px;
-        height: 41.75px;
-        margin-top: 5px;
-        color: #000000;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .card-subtitle-projects {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 15px;
-        color: #6F6F6F;
-        text-align: right;
-        margin-right: 30px;
-        margin-bottom: 30px;
-        text-transform: uppercase;
-        margin-right: -3px;
+    a {
+        text-decoration: none;
     }
 </style>
-<h4 class="header">Projects</h4>
+<h4 class="header">PROJECTS</h4>
 <hr class="horizontal-line">
 @include('shared.success-message')
 @include('shared.error-message')
@@ -394,7 +239,8 @@
             </div>
         </div>
     </div>
-
+    {{ $projects->links('pagination::bootstrap-5') }}
+</div>
 
     @include('layout.footer')
     @include('layout.scripts')

@@ -230,4 +230,3 @@
 </div>
 
 @include('layout.footer')
-@include('layout.scripts')

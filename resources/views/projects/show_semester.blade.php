@@ -160,12 +160,10 @@
     }
 
     #background-image {
-        background-image: url('{{ asset('assets/images/BG.png') }}'); /* Ensure correct path */
+        background-image: url('{{ asset('assets/images/BG.png') }}');
+        /* Ensure correct path */
         background-size: cover;
-        background-position: center;
         background-repeat: no-repeat;
-        height: 70vw;
-        object-fit: contain;
     }
 
     body {
@@ -347,8 +345,13 @@
         text-transform: uppercase;
         margin-right: -3px;
     }
+
+    a{
+        text-decoration: none;
+    
+    }
 </style>
-<h4 class="header">Projects</h4>
+<h4 class="header">PROJECTS</h4>
 <hr class="horizontal-line">
 @include('shared.success-message')
 @include('shared.error-message')
@@ -386,4 +389,3 @@
 
 
 @include('layout.footer')
-@include('layout.scripts')

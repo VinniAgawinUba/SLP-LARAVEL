@@ -38,7 +38,7 @@ class ProjectsController extends Controller
 
         // Get unique colleges from the projects
         $colleges = $projects->pluck('college_id')->unique();
-        $colleges = college::whereIn('id', $colleges)->get();
+        $colleges = college::whereIn('id', $colleges)->paginate(8);
 
         return view('projects.show_college', [
             'school_year_id' => $school_year_id,
@@ -57,7 +57,7 @@ class ProjectsController extends Controller
 
         // Get unique departments from the projects
         $departments = $projects->pluck('department_id')->unique();
-        $departments = department::whereIn('id', $departments)->get();
+        $departments = department::whereIn('id', $departments)->paginate(8);
 
         return view('projects.show_department', [
             'school_year_id' => $school_year_id,
@@ -74,7 +74,7 @@ class ProjectsController extends Controller
             ->where('semester', $semester_id)
             ->where('college_id', $college_id)
             ->where('department_id', $department_id)
-            ->get();
+            ->paginate(8);
 
         return view('projects.show_project', [
             'school_year_id' => $school_year_id,
