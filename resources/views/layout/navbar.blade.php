@@ -114,10 +114,10 @@
                         <a href="{{ url('/') }}" style="width:400px;">
                             <img src="{{ asset('assets/images/XULOGO.png') }}" alt="Logo" style="width: 80%;">
                         </a>
-                        <form class="d-flex justify-content-center ms-auto" action="{{ url('search') }}" method="GET">
+                        <form class="d-flex justify-content-center ms-auto" action="{{ route('search') }}" method="GET">
                             <input class="" id="custom-search" type="search" placeholder="{{ request('query', 'Search') }}" name="query">
                             <button class="btn btn-outline-primary" id="search-button" type="submit">Search</button>
-                        </form>
+                        </form>                        
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item text-center customfont">
                                 <a class="nav-link customfont" href="{{ url('about-us') }}">About Us</a>

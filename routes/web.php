@@ -16,6 +16,9 @@ use App\Http\Controllers\FacultiesController;
 
 Route::get('/', function () {return view('index');})->name('index');
 
+// Search Route
+Route::get('/search', [SearchController::class, 'search'])->name('search');
+
 
 //Google Auth
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google.auth');
