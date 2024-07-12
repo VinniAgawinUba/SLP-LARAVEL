@@ -108,57 +108,8 @@
         margin: 29px;
     }
 
-    #year-font-style {
-        margin-top: calc(120px / 3);
-        justify-content: center;
-        text-align: center;
-        white-space: pre-wrap;
-        padding-bottom: 30px;
-    }
+ 
 
-    #semester-font-style {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 160px;
-        font-size: 36px;
-    }
-
-    #college-font-style {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 160px;
-        font-size: 36px;
-    }
-
-    #department-font-style {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 160px;
-        font-size: 36px;
-    }
-
-    #projects-font-style {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 160px;
-        font-size: 36px;
-    }
-
-    #project-card {
-        box-sizing: border-box;
-        background: #FFFFFF;
-        border-radius: 10px;
-        width: 222px;
-        height: auto;
-    }
 
     #background-image {
         background-image: url('{{ asset('assets/images/BG.png') }}'); /* Ensure correct path */
@@ -174,38 +125,6 @@
         margin-right: 100px;
     }
 
-    .school-year-header {
-        display: flex;
-        background-color: #A19158;
-        padding: 15px 0;
-        margin-left: -12px;
-        margin-right: -12px;
-        margin-top: -20px;
-        justify-content: left;
-        align-items: left;
-        border-radius: 5px;
-    }
-
-    #year-header {
-        padding: 20px;
-        margin-left: 100px;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 39px;
-        color: #FFFFFF;
-    }
-
-    #sy {
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 16px;
-        text-align: center;
-        font-style: normal;
-        color: #5C80FA;
-        mix-blend-mode: normal;
-    }
 
     #college-of {
         font-family: 'Inter';
@@ -285,69 +204,39 @@
         background-color: #ffff;
     }
 
-    .card-body-featured {
-        box-sizing: border-box;
+    #card {
+        background: #FFFFFF;
         border-radius: 10px;
-        height: 25em;
+        width: 303px;
+        height: 475px;
     }
 
-    .card-title-featured {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 19px;
-        padding: 10px;
-        color: #000000;
-    }
-
-    .card-description-featured {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 15px;
-        height: 41.75px;
-        padding-left: 10px;
-        margin-top: -10px;
-        color: #000000;
-    }
-
-    .card-title-projects {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 19px;
-        color: #000000;
-    }
-
-    .card-text-projects {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 15px;
-        height: 41.75px;
-        margin-top: 5px;
-        color: #000000;
-        overflow: hidden;
+    #card-box {
+        flex-basis: 36px;
+        margin: 29px;
         text-overflow: ellipsis;
+        height: 40%;
+        width: 80%;
     }
 
-    .card-subtitle-projects {
+    #card-box:hover {
+        transition: transform 0.2s;
+        transform: scale(1.05);
+    }
+
+    #card-date {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
-        font-size: 12px;
-        line-height: 15px;
+        font-size: 8px;
+        line-height: 10px;
+
         color: #6F6F6F;
         text-align: right;
         margin-right: 30px;
         margin-bottom: 30px;
-        text-transform: uppercase;
-        margin-right: -3px;
     }
+
 </style>
 <h4 class="header">ARTICLES</h4>
 <hr class="horizontal-line">
@@ -358,32 +247,33 @@
         <div class="row gy-3" id="background-image">
             <div class="mainContent">
                 <div class="row gy-3">
-                   
-                    @php
-                        $articles = DB::table('articles')->get();
-                    @endphp
+               
                     @if($articles->isNotEmpty())
                         @foreach ($articles as $item)
                         @php
                         $article_id = $item->id;
                         @endphp
-                        <div class="col-md-3 mb-6 gy-3" style="display: flex; justify-content: center; flex-wrap: wrap" id="three-columns">
-                            <a href="{{url("/articles/$article_id")}}">
-                            <div class="year" id="school_year_{{ $item->id }}" style="text-align: center; justify-content: center;">
-                                <div class="card-body">
-                                    <!-- <h5 class="card-title text-white text-center"></h5> -->
-                                    {{ $item->id }}
-                                    <p class="card-text text-center" id="year-font-style"><span id="sy">SY</span> <br>{{ date('F d, Y', strtotime($item->published_date)) }}</p>
+                        <div style="display: flex; justify-content: center;" id="card-box">
+                            <a href="{{ route('articles.Details', ['article_id' => $item->id]) }}" style="text-decoration: none; color: inherit;">
+                                <div class="card h-100" style="margin-top: 50px !important;" id="card">
+                                    <img src="{{ asset('assets/uploads/articles/' . $item->thumb_nail_pic) }}" class="customPic"> <!-- Placeholder for image-->
+                                    <div class="card-body">
+                                        <h5 id="title">{{ $item->thumb_nail_title }}</h5>
+                                        <p id="card-text">{{ $item->thumb_nail_summary }}</p>
+                                        <!-- You can add more project details here -->
+                                    </div>
+                                    <!--Bottom of Card to place date-->
+                                    <p style="padding:5px; font-size:12px" id="card-date">{{ date('F j, Y', strtotime($item->published_date)) }}</p>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
                         </div>
                         @endforeach
                     @endif
                 </div>
             </div>
         </div>
+        {{ $articles->links('pagination::bootstrap-5') }}
     </div>
 
+
 @include('layout.footer')
-@include('layout.scripts')

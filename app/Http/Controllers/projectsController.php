@@ -20,7 +20,7 @@ class ProjectsController extends Controller
     //Frontpage Side
     public function index(Request $request)
     {
-        $schoolYears = school_year::orderBy('school_year', 'desc')->paginate(5);
+        $schoolYears = school_year::orderBy('school_year', 'desc')->paginate(8);
         return view('projects', ['schoolYears' => $schoolYears]);
     }
 

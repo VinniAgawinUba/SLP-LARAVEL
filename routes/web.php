@@ -38,11 +38,12 @@ Route::get('/projects/{school_year_id}/{semester_id}/{college_id}/{department_id
 Route::get('/projectview/{project_id}', [ProjectsController::class, 'showprojectDetails'])->name('projects.show_project_view');
 
 //Articles
-Route::get('/articles', [ArticlesController::class, 'articles'])->name('articles');
-Route::get('/articles/{article_id}', [ArticlesController::class, 'article'])->name('article');
+Route::get('/articles', [ArticlesController::class, 'articles'])->name('articles.View');
+Route::get('/articles/{article_id}', [ArticlesController::class, 'article'])->name('articles.Details');
 
 //Gallery
 Route::get('/gallery', [GalleriesController::class, 'gallery'])->name('gallery');
+Route::get('/gallery/{gallery_id}', [GalleriesController::class, 'galleryDetails'])->name('gallery.details');
 
 
 

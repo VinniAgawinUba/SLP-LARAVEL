@@ -11,16 +11,20 @@ class ArticlesController extends Controller
     //Front page side
     public function articles()
     {
-        return view('articles');
+        $articles = articles::orderBy('published_date', 'desc')->paginate(5);
+        return view('articles', ['articles' => $articles]);
     }
 
     public function article($article_id)
     {
         //pass the article_id to the view
-        return view('article-view', ['article_id' => $article_id]);
+        $article = articles::where('id', $article_id)->get();
+        return view('article-view', ['article_list' => $article]);
     }
 
     
+
+
 
     //Admin Panel side
     public function ArticlesView()

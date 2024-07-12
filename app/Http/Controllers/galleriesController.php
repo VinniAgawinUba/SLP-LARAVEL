@@ -20,6 +20,14 @@ class GalleriesController extends Controller
         return view('gallery', compact('galleries', 'currentPage'));
     }
 
+    public function galleryDetails($id)
+    {
+        $gallery = gallery::find($id);
+        return view('gallery-details', ['gallery' => $gallery]);
+    }
+
+
+
     // Admin Panel side
     public function GalleryView()
     {

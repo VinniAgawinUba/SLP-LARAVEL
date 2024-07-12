@@ -6,31 +6,159 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
                                         
-<footer class="bg-dark text-white py-5">
-    <div class="container mx-auto px-4">
-        <div class="flex flex-wrap justify-between items-start">
-            <div class="w-full md:w-1/2 lg:w-2/5 m-4">
-                <h2 class="text-lg font-semibold mb-3">About Xavier University's Physical Plant Office</h2>
-                <p class="py-2">The Physical Plant Office (PPO) at Xavier University plays a crucial role in managing the acquisition of goods and services for various departments and units within the university. As a central entity responsible for procurement activities, the CPU ensures compliance with regulations, maximizes cost-effectiveness, and maintains transparency in purchasing processes.</p>
+
+<style>
+    #headers {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        color: #283971;
+    }
+
+    #contact-details {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 16px;
+        color: #283971;
+        width: auto;
+    }
+
+    #footer-line {
+        margin-top: 50px;
+        width: auto;
+        margin-top: 100px;
+    }
+
+    #request-button {
+        width: 140px;
+        height: 32px;
+        left: 865px;
+        top: 2714px;
+        border: none;
+        background: #283971;
+        border-radius: 30px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 16px;
+        text-align: center;
+        color: #FFFFFF;
+    }
+
+    #request-button:hover {
+        background-color: #A19158;
+        transition: color 5s;
+    }
+
+    #request-button:active {
+        background-color: #8D7F4D;
+    }
+
+    #footer-container {
+        margin-top: 100px;
+    }
+
+    .mail-icon {
+        margin-right: 10px;
+    }
+
+    .phone-icon {
+        margin-right: 10px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .cards-body {
+        margin-top: 10px;
+        padding: 10px 15px;
+    }
+</style>
+</head>
+
+<body>
+<!-- Page Content-->
+<section class="pt-4 bg-light bg-gradient" style="position: relative;">
+    <div class="container px-lg-5" id=footer-container>
+        <!-- Page Features-->
+        <div class="row gx-lg-5">
+            <div class="col-lg-4 col-xxl-4 ">
+                <div class="cards bg-light border-0">
+                    <div class="cards-body ">
+                        <h2 class="fs-4 fw-bold" id="headers">CONTACT US</h2>
+                        <a href="">
+                            <p class="mb-0" id="contact-details">
+                                <span class="mail-icon">
+                                    <img src="{{asset('assets/images/mail-icon.svg')}}" alt="mail-icon">
+                                </span>
+                                slp@xu.edu.ph
+                            </p>
+                        </a>
+                        <p class="mb-0" id="contact-details">
+                            <span class="phone-icon">
+                                <img src="{{asset('assets/images/phone.svg')}}" alt="phone-icon">
+                            </span>
+                            (088) 853-9800 | Local 9173
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xxl-4">
+                <div class="cards bg-light border-0">
+                </div>
+            </div>
+            <div class="col-lg-4 col-xxl-4">
+                <div class="cards bg-light border-0 ">
+                    <div class="cards-body">
+
+                        <h2 class="fs-4 fw-bold" id="headers">REQUEST ACCESS</h2>
+                        <p class="mb-2" id="contact-details">Want more access to information?</p>
+                        <button type="button" class="btn btn-primary" id="request-button">Request Access</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="w-full md:w-1/2 lg:w-1/5 m-3">
-                <h2 class="text-lg font-semibold mb-3">Help Desk</h2>
-                <p class="py-2">For assistance, contact:</p>
-                <div class="flex items-center">
-                    <span class="text-gray-400 mr-2"><i class="fas fa-envelope"></i></span><p class="py-2 mb-0">ciso@xu.edu.ph</p>
+        </div>
+
+
+        <div class="row gx-lg-5">
+            <div class="col-lg-7 col-xxl-4">
+                <div class="cards bg-light border-0 h-100">
+                    <div class="cards-body">
+
+                        <h2 class="fs-4 fw-bold" id="headers">FIND US HERE</h2>
+                        <p class="mb-0" id="contact-details">Ground Floor, Agriculture Building, Room 103, </p>
+                        <p class="mb-0" id="contact-details">Xavier University - Ateneo de Cagayan, Corrales Avenue,</p>
+                        <p class="mb-0" id="contact-details">Cagayan de Oro City, 9000, Philippines</p>
+                    </div>
                 </div>
-                <div class="flex items-center mt-2">
-                    <span class="text-gray-400 mr-2"><i class="fas fa-phone-alt"></i></span><p class="py-2 mb-0 text-nowrap">(088) 853-9800</p>
+            </div>
+            <div class="col-lg-5 col-xxl-4 h-50">
+                <div class="cards bg-light border-0">
+                </div>
+            </div>
+            <div class="col-lg-5 col-xxl-4 h-50">
+                <div class="cards bg-light border-0">
                 </div>
             </div>
         </div>
-
-        <div class="flex items-center justify-center pt-3">
-            <p class="text-center mb-0">© <?php echo date('Y'); ?> Xavier University - Ateneo de Cagayan Corrales Avenue, Cagayan de Oro City, Philippines.</p>
+        <hr id="footer-line">
+        <div class="row gy-3">
+            <div class="col" id="contact-details" style="text-align:right;">
+                <p>© {{date('Y')}} Xavier University - Ateneo De Cagayan Corrales Avenue, Cagayan de Oro, Philippines</p>
+            </div>
         </div>
     </div>
-</footer>
+</section>
+
+<!-- Closing body and html tags -->
+</body>
 
 
 

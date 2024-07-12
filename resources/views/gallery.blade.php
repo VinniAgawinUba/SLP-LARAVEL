@@ -197,7 +197,7 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ $gallery->name }}</h5>
-                        <a href="#" class="btn btn-primary">View Gallery</a>
+                        <a href="{{route('gallery.details', ['gallery_id' => $gallery->id])}}" class="btn btn-primary">View Gallery</a>
                     </div>
                 </div>
             </div>
