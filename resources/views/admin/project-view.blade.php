@@ -51,7 +51,16 @@
                                 <td>{{ $row->description }}</td>
                                 <td>{{ $row->sl_type }}</td>
                                 <td>{{ $row->subject_hosted }}</td>
-                                <td>INSERT FACULTY</td>
+                                <td>
+                                    @if($row->faculties)
+                                    @foreach($row->faculties as $faculty)
+                                    {{ $faculty->fname }} {{ $faculty->lname }}<br>
+                                    @endforeach
+                                    @else
+                                    No Faculty Found
+                                    @endif
+                                </td>
+
                                 <td>
                                     @if($row->college)
                                     {{ $row->college->name }}

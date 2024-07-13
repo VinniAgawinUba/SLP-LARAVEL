@@ -161,6 +161,7 @@ class ProjectsController extends Controller
             'status' => 'required',
             'faculty' => 'array',
             'sdgs' => 'array',
+            'number_of_students' => 'integer',
             'project_documents' => 'array',
             'project_documents.*' => 'file|mimes:pdf,doc,docx,xlsx,xls,csv,txt,jpg,jpeg,png,gif'
         ]);
@@ -178,6 +179,7 @@ class ProjectsController extends Controller
         $newProject->school_year_id = $request->school_year_id;
         $newProject->semester = $request->semester;
         $newProject->status = $request->status;
+        $newProject->number_of_students = $request->number_of_students;
         $newProject->save();
 
         // Insert faculty members
@@ -268,6 +270,7 @@ class ProjectsController extends Controller
             'school_year_id' => 'required',
             'semester' => 'required',
             'status' => 'required',
+            'number_of_students' => 'integer',
             'faculty' => 'required|array',
             'sdgs' => 'required|array',
             'project_documents.*' => 'nullable|file|mimes:pdf,doc,docx,xlsx,xls,csv,txt,jpg,jpeg,png,gif'
@@ -280,7 +283,7 @@ class ProjectsController extends Controller
         $project->update($request->only([
             'name', 'sl_type', 'description', 'subject_hosted', 'college_id',
             'department_id', 'sd_coordinator_id', 'partner_id', 'school_year_id',
-            'semester', 'status'
+            'semester', 'status', 'number_of_students'
         ]));
 
         // Update faculty members

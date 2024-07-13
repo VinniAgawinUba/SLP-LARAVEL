@@ -52,7 +52,7 @@ Route::get('/gallery/{gallery_id}', [GalleriesController::class, 'galleryDetails
 
 
 
-//Admin Panel
+//Admin Panel-----------------------------------------------------------------------------------------------------------------
 Route::get('/admin', [PageController::class, 'admin'])->name('admin');
 
 //Admin Panel Registered Users

@@ -287,7 +287,7 @@
                     <div class="header">
                         <h5 id="article-header">ARTICLES</h5>
                         <aside class="aside-button">
-                            <a href="{{ url('articles') }}">
+                            <a href="{{ route('articles.View') }}">
                                 <button id="see-all-button">See All...</button>
                             </a>
                         </aside>
@@ -298,7 +298,7 @@
                     @if($articles->isNotEmpty())
                         @foreach ($articles as $item)
                             <div class="col-md-3" class="cardClass">
-                                <a href="{{ url('article-view/' . $item->id) }}" style="text-decoration: none; color: inherit;">
+                                <a href="{{route('articles.Details', $item->id)}}" style="text-decoration: none; color: inherit;">
                                     <div class="card h-100" style="margin-top: 50px !important;" id="card">
                                         <img src="{{ asset('uploads/articles/' . $item->thumb_nail_pic) }}" class="customPic">
                                         <div class="card-body">
@@ -335,7 +335,7 @@
                         @foreach ($projects as $item)
                             <div class="col-md-3">
                                 <div style="margin-top: 50px !important;" id="projects-card">
-                                    <a href="{{ url('project-details/' . $item->id) }}">
+                                    <a href="{{route('projects.show_project_view', $item->id)}}">
                                         <img src="{{ asset('assets/images/article-pic.png') }}" class="customPic">
                                         <div class="card-body-projects">
                                             <h5 id="project-title">{{ $item->name }}</h5>

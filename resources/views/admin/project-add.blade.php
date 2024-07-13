@@ -32,9 +32,13 @@
                                 <label for="name">Name</label>
                                 <input type="text" name="name" required class="form-control" placeholder="Project Name">
                             </div>
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-3 mb-3">
                                 <label for="type">SL Type</label>
                                 <input type="text" name="sl_type" required class="form-control" placeholder="SL Type">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="type">Number of Students</label>
+                                <input type="text" name="number_of_students" class="form-control" placeholder="#">
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="description">Description</label>

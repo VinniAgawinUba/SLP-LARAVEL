@@ -175,7 +175,7 @@
                                             <p class="card-text"><strong>School Year:</strong>
                                                 {{ $schoolYear->school_year ?? 'Not Found' }}</p>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <p class="card-text"><strong>Semester:</strong>
                                                 @switch($project->semester)
                                                     @case(1)
@@ -195,6 +195,13 @@
                                                 @endswitch
                                             </p>
                                         </div>
+
+                                        {{-- Number Of Students --}}
+                                        <div class="col-md-6">
+                                            <p class="card-text"><strong>Number of Students:</strong>
+                                                {{ $project->number_of_students }}</p>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

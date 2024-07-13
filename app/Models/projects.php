@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class projects extends Model
 {
     protected $table = 'projects';
-    protected $fillable = ['name', 'description', 'type', 'subject_hosted', 'college_id', 'department_id', 'sd_coordinator_id', 'partner_id', 'school_year_id', 'semester', 'status', 'featured'];
+    protected $fillable = ['name', 'description', 'type', 'subject_hosted', 'number_of_students', 'college_id', 'department_id', 'sd_coordinator_id', 'partner_id', 'school_year_id', 'semester', 'status', 'featured'];
 
     public function schoolYear()
     {
@@ -24,6 +24,11 @@ class projects extends Model
     public function department()
     {
         return $this->belongsTo(department::class);
+    }
+
+    public function partner()
+    {
+        return $this->belongsTo(partners::class);
     }
 
     public function faculties(): BelongsToMany
