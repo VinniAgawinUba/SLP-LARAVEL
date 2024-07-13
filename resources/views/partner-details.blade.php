@@ -23,17 +23,39 @@
                                             <p class="card-text"><strong>Partner Name:</strong> {{ $partner->name }}</p>
                                         </div>
                                         <div class="col-md-12">
-                                            <p class="card-text"><strong>Type:</strong> {{ $partner->type_id }}</p>
+                                            <p class="card-text"><strong>Type:</strong> 
+                                                @switch($partner->type_id)
+                                                    @case(1)
+                                                        Local Government Units
+                                                        @break
+                                                    @case(2)
+                                                        Civil Society Organizations
+                                                        @break
+                                                    @case(3)
+                                                        Industry
+                                                        @break
+                                                    @case(4)
+                                                        Non-Government
+                                                        @break
+                                                    @case(5)
+                                                        Private Sector
+                                                        @break
+                                                    @case(6)
+                                                        In-XU
+                                                        @break
+                                                    @case(7)
+                                                        Government Agencies
+                                                        @break
+                                                    @case(8)
+                                                        Schools
+                                                        @break
+                                                    @default
+                                                        Unknown
+                                                @endswitch
+                                            </p>
                                         </div>
-                                        <div class="col-md-12">
-                                            <p class="card-text"><strong>Contact Person:</strong> {{ $partner->contact_person }}</p>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <p class="card-text"><strong>Email:</strong> {{ $partner->email }}</p>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <p class="card-text"><strong>Contact Number:</strong> {{ $partner->contact_number }}</p>
-                                        </div>
+                                        
+                                        
                                         <div class="col-md-12">
                                             <p class="card-text"><strong>Address:</strong> {{ $partner->address }}</p>
                                         </div>

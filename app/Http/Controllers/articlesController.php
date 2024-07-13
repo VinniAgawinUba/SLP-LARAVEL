@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\articles;
 use App\Models\projects;
+use Illuminate\Support\Facades\Cookie;
 
 class ArticlesController extends Controller
 {
@@ -17,9 +18,22 @@ class ArticlesController extends Controller
 
     public function article($article_id)
     {
-        //pass the article_id to the view
-        $article = articles::where('id', $article_id)->get();
-        return view('article-view', ['article_list' => $article]);
+        // Retrieve a single article instance
+        $article = articles::where('id', $article_id)->first();
+
+        if ($article) {
+            $cookieName = 'article_' . $article_id . '_viewed';
+
+            if (!Cookie::get($cookieName)) {
+                // Increment the hits count
+                $article->increment('hits');
+
+                // Set a cookie to indicate the article has been viewed
+                Cookie::queue($cookieName, true, 1440); // 1440 minutes = 1 day
+            }
+        }
+
+        return view('article-view', ['article' => $article]);
     }
 
     

@@ -97,7 +97,6 @@
             <div class="mainContent">
                 <div class="row gy-3">
                    
-                         @foreach ($article_list as $article)
                         
                         <body>
                             <div class="title-container">
@@ -106,18 +105,18 @@
                                 <div class="container">
                                     <div class="content-container"> <!-- New container for article content -->
                                         <aside>
-                                            <img src="uploads/articles/{{ $article['thumb_nail_pic'] }}" id="customPic" alt="Article Thumbnail Picture">
+                                            <img src="uploads/articles/{{ $article->thumb_nail_pic}}" id="customPic" alt="Article Thumbnail Picture">
                                         </aside>
                                         <article class="article-container">
                                             <h2 id="card-title">{{ $article->thumb_nail_title }}</h2>
                                             <p class="publish-date-text">{{ date('F j, Y', strtotime($article->published_date)) }}</p>
                                             <p>{{ $article->content}}</p>
+                                            <p><strong>Hits:</strong> {{ $article->hits }}</p>
                                         </article>
                                     </div>
                                 </div>
                             </div>
                         </body>
-                        @endforeach
                 </div>
             </div>
         </div>

@@ -264,6 +264,7 @@
                                     </div>
                                     <!--Bottom of Card to place date-->
                                     <p style="padding:5px; font-size:12px" id="card-date">{{ date('F j, Y', strtotime($item->published_date)) }}</p>
+                                    <p>Hits: {{ $item->hits }}</p>
                                 </div>
                             </a>
                         </div>
