@@ -132,8 +132,15 @@
                             School Years
                         </a>
                     </nav>
+                    
                 </div>
                 @endif
+
+                 <!--  📅 routing to Frontpage Announcements view -->
+                 <a class="nav-link" href="{{route('runningText.view')}}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-bullhorn"></i></div>
+                    Announcements
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">

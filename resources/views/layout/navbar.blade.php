@@ -173,10 +173,51 @@
                         <a class="nav-link customfont font-style" id="nav-item" href="{{ url('gallery') }}">GALLERY</a>
                     </li>
                 </ul>
+                
             </div>
         </div>
     </header>
     @yield('content')
+
+    <div id="runningText"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- AJAX Script -->
+<script>
+    $(document).ready(function() {
+        fetchRunningTexts();
+
+        function fetchRunningTexts() {
+            $.ajax({
+                url: '{{ route("api.getRunningTexts") }}',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    if (data.length > 0) {
+                        let currentIndex = 0;
+                        displayRunningText(data[currentIndex]);
+                        
+                        setInterval(function() {
+                            currentIndex = (currentIndex + 1) % data.length;
+                            displayRunningText(data[currentIndex]);
+                        }, 15000); // Adjust interval as needed
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching running texts:', error);
+                }
+            });
+        }
+
+        function displayRunningText(runningText) {
+            let runningTextContainer = document.getElementById('runningText');
+            runningTextContainer.innerHTML = ''; // Clear previous content
+
+            let messageDiv = document.createElement('div');
+            messageDiv.textContent = runningText.message;
+            runningTextContainer.appendChild(messageDiv);
+        }
+    });
+</script>
 </body>
 
 </html>

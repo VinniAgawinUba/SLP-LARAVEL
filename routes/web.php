@@ -55,6 +55,15 @@ Route::get('/gallery/{gallery_id}', [GalleriesController::class, 'galleryDetails
 //Admin Panel-----------------------------------------------------------------------------------------------------------------
 Route::get('/admin', [PageController::class, 'admin'])->name('admin');
 
+// Routes for Running Text CRUD operations
+Route::get('/admin/running-text', [PageController::class, 'runningText'])->name('runningText.view');
+Route::get('/admin/running-text/create', [PageController::class, 'createRunningText'])->name('runningText.create');
+Route::post('/admin/running-text/store', [PageController::class, 'storeRunningText'])->name('runningText.store');
+Route::get('/admin/running-text/{id}/edit', [PageController::class, 'editRunningText'])->name('runningText.edit');
+Route::put('/admin/running-text/{id}/update', [PageController::class, 'updateRunningText'])->name('runningText.update');
+Route::delete('/admin/running-text/{id}/delete', [PageController::class, 'deleteRunningText'])->name('runningText.delete');
+Route::get('/api/running-text', [PageController::class, 'getRunningTexts'])->name('api.getRunningTexts');
+
 //Admin Panel Registered Users
 Route::get('/admin/register/view', [PageController::class, 'RegisterView'])->name('admin.registerView');
 Route::get('/admin/register/add', [RegisteredUserController::class, 'RegisterAdd'])->name('admin.registerAdd');
