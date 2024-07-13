@@ -278,7 +278,7 @@
                 option for the poor), and in the light and provision of the Jesuit Province Roadmap and of the United
                 Nations’ Sustainable Development Goals.
             </p>
-            <a href="{{ url('about-us') }}" style="text-decoration: none; color: inherit;">
+            <a href="{{ route('about.us') }}" style="text-decoration: none; color: inherit;">
                 <button id="find-out-more-button">Find out more</button>
             </a>
         </article>

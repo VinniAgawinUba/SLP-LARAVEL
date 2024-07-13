@@ -29,7 +29,7 @@ class PageController extends Controller
 
     public function aboutUs()
     {
-        return view('about_us');
+        return view('about-us');
     }
 
     //Get Active Running Texts

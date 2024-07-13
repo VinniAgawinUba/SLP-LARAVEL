@@ -19,6 +19,9 @@ Route::get('/', function () {return view('index');})->name('index');
 // Search Route
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
+//About us
+Route::get('/aboutus', [PageController::class, 'aboutUs'])->name('about.us');
+
 
 //Google Auth
 Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google.auth');
