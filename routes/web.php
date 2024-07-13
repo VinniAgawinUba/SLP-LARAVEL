@@ -67,13 +67,16 @@ Route::post('/admin/register/delete', [RegisteredUserController::class, 'registe
 Route::get('/admin/projects/view', [ProjectsController::class, 'ProjectsView'])->name('admin.projectsView');
 Route::get('/admin/projects/add', [ProjectsController::class, 'ProjectsAdd'])->name('admin.projectsAdd');
 Route::post('/admin/projects/add', [ProjectsController::class, 'ProjectsInsert'])->name('admin.projectsInsert');
-Route::get('/admin/projects/edit/{id}', [ProjectsController::class, 'ProjectsEdit'])->name('admin.projectsEdit');
+Route::get('/admin/projects/edit/{id}', [ProjectsController::class, 'ProjectsEdit'])->name('admin.projectsEdit')
+;Route::get('/admin/projects/view/{id}', [ProjectsController::class, 'ProjectsViewDetails'])->name('admin.projectsViewDetails');
 Route::post('/admin/projects/update/{id}', [ProjectsController::class, 'ProjectsUpdate'])->name('admin.projectsUpdate');
 Route::post('/admin/projects/delete/{id}', [ProjectsController::class, 'ProjectsDelete'])->name('admin.projectsDelete');
 Route::delete('/admin/projects/document-delete/{id}', [ProjectsController::class, 'IndividualProjectDocumentDelete'])->name('admin.projects.documentDelete');
 Route::post('/admin/projects/update-featured', [ProjectsController::class, 'updateFeatured'])->name('admin.projectsUpdateFeatured'); //Ajax Update Featured
-// web.php
 Route::get('/admin/departments/{college}', [ProjectsController::class, 'getDepartmentsByCollege']);//Ajax Get Departments by College
+// Route for downloading documents
+Route::get('/download/document/{id}', [ProjectsController::class, 'downloadDocument'])->name('download.document');
+
 
 //Admin Faculty
 Route::get('/admin/faculty/view', [FacultiesController::class, 'FacultyView'])->name('admin.facultyView');

@@ -47,7 +47,7 @@
                             @foreach($projects as $row)
                             <tr>
                                 <td>{{ $row->id }}</td>
-                                <td>{{ $row->name }}</td>
+                                <td><a href="{{route('admin.projectsViewDetails', $row->id)}}">{{ $row->name }}</a></td>
                                 <td>{{ $row->description }}</td>
                                 <td>{{ $row->sl_type }}</td>
                                 <td>{{ $row->subject_hosted }}</td>

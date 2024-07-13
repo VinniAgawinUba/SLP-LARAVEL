@@ -1,5 +1,7 @@
-@extends('layout.header')
-@include('layout.navbar')
+@if(auth()->check() && in_array(auth()->user()->auth_role, ['super', 'admin']))
+@include('layout.admin-header')
+@include('shared.success-message')
+@include('shared.error-message')
 <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 <style>
     .project-image {
@@ -142,6 +144,7 @@
             <div class="col-md-12 mb-4">
                 <div class="cards shadow-sm" style="padding: 20px 60px;">
                     <div class="card-body">
+                        <a href="{{ route('admin.projectsView') }}" class="btn btn-danger float-end">BACK</a>
                         <div class="row">
                             <!-- Column 1 of Card -->
                             <div class="col-md-6">
@@ -275,7 +278,34 @@
                                 </div>
                             </div>
                         </div>
-
+                        <!-- Row 5: Project Documents -->
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <h5>Project Documents</h5>
+                                @if ($project->projectDocuments->isNotEmpty())
+                                    <ul class="list-group">
+                                        @foreach ($project->projectDocuments as $document)
+                                            <li class="list-group-item">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-6">
+                                                        <span>{{ $document->file_name }}</span>
+                                                    </div>
+                                                    <div class="col-md-6 text-right">
+                                                        <a href="{{ route('download.document', $document->id) }}" class="btn btn-sm btn-primary mr-2">Download</a>
+                                                        @if (in_array($document->extension, ['pdf', 'jpg', 'jpeg', 'png', 'gif']))
+                                                            <a href="{{ asset('path_to_your_documents/' . $document->file_name) }}" target="_blank" class="btn btn-sm btn-info">Preview</a>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @else
+                                    <p>No project documents found.</p>
+                                @endif
+                            </div>
+                        </div>
+                        
                         
                     </div>
                 </div>
@@ -287,5 +317,5 @@
     </div>
 </div>
 
-@include('layout.footer')
 @include('layout.scripts')
+@endif

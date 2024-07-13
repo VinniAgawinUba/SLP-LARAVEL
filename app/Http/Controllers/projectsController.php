@@ -124,6 +124,47 @@ class ProjectsController extends Controller
         return view('admin.project-view', ['projects' => $projects]);
     }
 
+    public function ProjectsViewDetails($id)
+    {
+        $project = projects::with(['schoolYear', 'college', 'department', 'faculties', 'projectSdgs'])
+            ->where('id', $id)
+            ->first();
+
+        if (!$project) {
+            return view('admin.project-view-details', ['project' => null]);
+        }
+
+        // Fetch the first gallery photo
+        $photo = gallery_photos::where('project_id', $id)->first();
+        $college = $project->college;
+        $department = $project->department;
+        //Find partner in partners table
+        $partner = partners::find($project->partner_id);
+        $schoolYear = $project->schoolYear;
+        $dean = $college ? faculty::find($college->dean_id) : null;
+        $involvedFaculties = $project->faculties;
+        $sdgs = $project->projectSdgs->pluck('sdg');
+
+        return view('admin.project-view-details', compact('project', 'photo', 'college', 'department', 'partner', 'schoolYear', 'dean', 'involvedFaculties', 'sdgs'));
+    }
+    
+    public function downloadDocument($id)
+{
+    $document = project_documents::findOrFail($id);
+
+    // Example: Implement logic to verify permissions if necessary
+
+    $filePath = storage_path('app/' . $document->file_path);
+
+    if (file_exists($filePath)) {
+        return response()->download($filePath, $document->file_name);
+    } else {
+        abort(404, 'File not found');
+    }
+}
+
+
+
     public function ProjectsAdd()
     {
         $colleges = college::all();
