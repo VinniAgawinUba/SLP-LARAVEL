@@ -47,26 +47,29 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="college_id">College</label>
-                                    <select name="college_id" required class="form-control select2">
+                                    <select name="college_id" id="college_id" required class="form-control select2">
                                         <option value="">--Select College--</option>
                                         @foreach ($colleges as $college)
                                             <option value="{{ $college->id }}"
                                                 {{ $project->college_id == $college->id ? 'selected' : '' }}>
-                                                {{ $college->name }}</option>
+                                                {{ $college->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="department_id">Department</label>
-                                    <select name="department_id" required class="form-control select2">
+                                    <select name="department_id" id="department_id" required class="form-control select2">
                                         <option value="">--Select Department--</option>
                                         @foreach ($departments as $department)
                                             <option value="{{ $department->id }}"
                                                 {{ $project->department_id == $department->id ? 'selected' : '' }}>
-                                                {{ $department->name }}</option>
+                                                {{ $department->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
+                                
                                 <div class="col-md-6 mb-3">
                                     <label for="sd_coordinator_id">SD Coordinator</label>
                                     <select name="sd_coordinator_id" class="form-control select2">
@@ -203,6 +206,9 @@
         </div>
     </div>
 
+    @include('layout.admin-footer')
+    @include('layout.scripts')
+
     <script>
         function addFacultySelect() {
             var container = document.getElementById("faculty-select-container");
@@ -249,8 +255,36 @@
         }
     </script>
 
-    @include('layout.admin-footer')
-    @include('layout.scripts')
+    {{-- Javascript for making departments show only departments under college choice --}}
+<script>
+    $(document).ready(function() {
+        $('#college_id').on('change', function() {
+            var collegeId = $(this).val();
+            if (collegeId) {
+                $.ajax({
+                    url: '/admin/departments/' + collegeId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#department_id').empty();
+                        $('#department_id').append('<option value="">--Select Department--</option>');
+                        $.each(data, function(key, value) {
+                            $('#department_id').append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching departments: ' + error);
+                    }
+                });
+            } else {
+                $('#department_id').empty();
+                $('#department_id').append('<option value="">--Select Department--</option>');
+            }
+        });
+    });
+</script>
+
+
 @else
     <script>
         window.location.href = '/';

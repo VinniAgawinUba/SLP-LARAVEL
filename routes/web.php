@@ -72,6 +72,8 @@ Route::post('/admin/projects/update/{id}', [ProjectsController::class, 'Projects
 Route::post('/admin/projects/delete/{id}', [ProjectsController::class, 'ProjectsDelete'])->name('admin.projectsDelete');
 Route::delete('/admin/projects/document-delete/{id}', [ProjectsController::class, 'IndividualProjectDocumentDelete'])->name('admin.projects.documentDelete');
 Route::post('/admin/projects/update-featured', [ProjectsController::class, 'updateFeatured'])->name('admin.projectsUpdateFeatured'); //Ajax Update Featured
+// web.php
+Route::get('/admin/departments/{college}', [ProjectsController::class, 'getDepartmentsByCollege']);//Ajax Get Departments by College
 
 //Admin Faculty
 Route::get('/admin/faculty/view', [FacultiesController::class, 'FacultyView'])->name('admin.facultyView');

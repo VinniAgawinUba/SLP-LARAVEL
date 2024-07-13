@@ -87,28 +87,28 @@ class ProjectsController extends Controller
 
 
     public function showprojectDetails($project_id)
-{
-    $project = projects::with(['schoolYear', 'college', 'department', 'faculties', 'projectSdgs'])
-        ->where('id', $project_id)
-        ->first();
+    {
+        $project = projects::with(['schoolYear', 'college', 'department', 'faculties', 'projectSdgs'])
+            ->where('id', $project_id)
+            ->first();
 
-    if (!$project) {
-        return view('projects.show_project-details', ['project' => null]);
+        if (!$project) {
+            return view('projects.show_project-details', ['project' => null]);
+        }
+
+        // Fetch the first gallery photo
+        $photo = gallery_photos::where('project_id', $project_id)->first();
+        $college = $project->college;
+        $department = $project->department;
+        //Find partner in partners table
+        $partner = partners::find($project->partner_id);
+        $schoolYear = $project->schoolYear;
+        $dean = $college ? faculty::find($college->dean_id) : null;
+        $involvedFaculties = $project->faculties;
+        $sdgs = $project->projectSdgs->pluck('sdg');
+
+        return view('projects.show_project-details', compact('project', 'photo', 'college', 'department', 'partner', 'schoolYear', 'dean', 'involvedFaculties', 'sdgs'));
     }
-
-     // Fetch the first gallery photo
-     $photo = gallery_photos::where('project_id', $project_id)->first();
-    $college = $project->college;
-    $department = $project->department;
-    //Find partner in partners table
-    $partner = partners::find($project->partner_id);
-    $schoolYear = $project->schoolYear;
-    $dean = $college ? faculty::find($college->dean_id) : null;
-    $involvedFaculties = $project->faculties;
-    $sdgs = $project->projectSdgs->pluck('sdg');
-
-    return view('projects.show_project-details', compact('project', 'photo', 'college', 'department', 'partner', 'schoolYear', 'dean', 'involvedFaculties', 'sdgs'));
-}
 
 
 
@@ -196,18 +196,18 @@ class ProjectsController extends Controller
 
 
         // Insert project documents
-        if ($request->hasFile('project_documents')){
-        foreach ($request->file('project_documents') as $document) {
-            $path = $document->store('project_documents');
-            $projectDocument = new project_documents();
-            $projectDocument->project_id = $newProject->id;
-            $projectDocument->file_name = $document->getClientOriginalName();
-            $projectDocument->file_type = $document->getClientMimeType();
-            $projectDocument->file_size = $document->getSize();
-            $projectDocument->file_path = $path;
-            $projectDocument->save();
+        if ($request->hasFile('project_documents')) {
+            foreach ($request->file('project_documents') as $document) {
+                $path = $document->store('project_documents');
+                $projectDocument = new project_documents();
+                $projectDocument->project_id = $newProject->id;
+                $projectDocument->file_name = $document->getClientOriginalName();
+                $projectDocument->file_type = $document->getClientMimeType();
+                $projectDocument->file_size = $document->getSize();
+                $projectDocument->file_path = $path;
+                $projectDocument->save();
+            }
         }
-    }
         //Auto create gallery for the project
         $newGallery = new gallery();
         $newGallery->project_id = $newProject->id;
@@ -245,15 +245,15 @@ class ProjectsController extends Controller
         if ($document) {
             // Remove the document file from storage
             Storage::delete($document->file_path);
-            
+
             // Delete the document record from the database
             $document->delete();
-            
+
             return redirect()->back()->with('success', 'Document deleted successfully!');
         }
         return redirect()->back()->with('error', 'Document not found!');
     }
-    
+
 
 
     public function ProjectsUpdate(Request $request, $id)
@@ -301,10 +301,10 @@ class ProjectsController extends Controller
             $projectSdg->save();
         }
 
-        
 
-            // Add new documents
-            if ($request->hasFile('project_documents')){
+
+        // Add new documents
+        if ($request->hasFile('project_documents')) {
             foreach ($request->file('project_documents') as $document) {
                 $path = $document->store('project_documents');
                 $projectDocument = new project_documents();
@@ -324,13 +324,13 @@ class ProjectsController extends Controller
     {
         // Find the project
         $project = projects::findOrFail($id);
-    
+
         // Delete associated project documents
         $project->projectDocuments()->delete();
-    
+
         // Delete the project itself
         $project->delete();
-    
+
         return redirect()->route('admin.projectsView')->with('success', 'Project deleted successfully!');
     }
 
@@ -345,5 +345,12 @@ class ProjectsController extends Controller
         }
         return response()->json(['error' => 'Project not found!'], 404);
     }
-    
+
+    //Ajax get departments by college
+    public function getDepartmentsByCollege($collegeId)
+    {
+        $college = college::findOrFail($collegeId);
+        $departments = $college->departments()->select('id', 'name')->get();
+        return response()->json($departments);
+    }
 }
