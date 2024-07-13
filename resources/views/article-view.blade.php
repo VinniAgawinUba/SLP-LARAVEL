@@ -5,7 +5,7 @@
 <style>
     .title-container {
         padding: 28px;
-        
+
     }
 
     #card-title {
@@ -15,7 +15,7 @@
         font-size: 30px;
         line-height: 48px;
         text-align: left;
-    
+
         color: black;
         text-align: justify;
         color: #283971;
@@ -28,7 +28,7 @@
         font-size: 16px;
         line-height: 24px;
         text-align: left;
-        
+
 
         color: blacks;
     }
@@ -78,6 +78,7 @@
 
     .article-container {
         flex: 1;
+        padding: 30px
         /* Let the article content occupy remaining space */
 
     }
@@ -92,34 +93,26 @@
 @include('shared.success-message')
 @include('shared.error-message')
 
-    <div class="container-fluid" id="first-content">
-        <div class="row gy-3">
-            <div class="mainContent">
-                <div class="row gy-3">
-                   
-                        
-                        <body>
-                            <div class="title-container">
-                            </div>
-                            <div id="super-container">
-                                <div class="container">
-                                    <div class="content-container"> <!-- New container for article content -->
-                                        <aside>
-                                            <img src="uploads/articles/{{ $article->thumb_nail_pic}}" id="customPic" alt="Article Thumbnail Picture">
-                                        </aside>
-                                        <article class="article-container">
-                                            <h2 id="card-title">{{ $article->thumb_nail_title }}</h2>
-                                            <p class="publish-date-text">{{ date('F j, Y', strtotime($article->published_date)) }}</p>
-                                            <p>{{ $article->content}}</p>
-                                            <p><strong>Hits:</strong> {{ $article->hits }}</p>
-                                        </article>
-                                    </div>
-                                </div>
-                            </div>
-                        </body>
-                </div>
+
+<body>
+    <div class="title-container">
+    </div>
+    <div id="super-container">
+        <div class="container">
+            <div class="content-container"> <!-- New container for article content -->
+                <aside>
+                    <img src="{{ asset('assets/uploads/articles/' . $article->thumb_nail_pic) }}" class="customPic"
+                        alt="Article Thumbnail Picture">
+                </aside>
+                <article class="article-container">
+                    <h2 id="card-title">{{ $article->thumb_nail_title }}</h2>
+                    <p class="publish-date-text">{{ date('F j, Y', strtotime($article->published_date)) }}</p>
+                    <p>{{ $article->content }}</p>
+                    <p><strong>Hits:</strong> {{ $article->hits }}</p>
+                </article>
             </div>
         </div>
     </div>
+</body>
 
 @include('layout.footer')

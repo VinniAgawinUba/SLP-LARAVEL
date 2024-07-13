@@ -12,12 +12,10 @@ class GalleriesController extends Controller
     // Front page side
     public function gallery(Request $request)
     {
-        $itemsPerPage = 3;
-        $currentPage = $request->query('page', 1);
 
-        $galleries = gallery::orderBy('id', 'desc')->paginate($itemsPerPage);
+        $galleries = gallery::orderBy('id', 'desc')->paginate(4);
 
-        return view('gallery', compact('galleries', 'currentPage'));
+        return view('gallery', compact('galleries'));
     }
 
     public function galleryDetails($id)

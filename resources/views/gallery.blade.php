@@ -208,7 +208,7 @@
 </div>
 
 <div class="pagination">
-    {{ $galleries->links() }}
+    {{ $galleries->links('pagination::bootstrap-5') }}
 </div>
 
 @include ('layout.scripts')
