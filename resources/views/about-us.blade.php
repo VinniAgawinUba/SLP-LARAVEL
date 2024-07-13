@@ -307,6 +307,12 @@
                                     </tr>
                                 </table>
 
+                                <div class="div">
+                                    <footer>
+                                        <p>Website developed by Vinni Uba, Miguel Tan, Ben Jimenez, and Luke Salamat.</p>
+                                    </footer>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -317,4 +323,5 @@
 
 </body>
 
-@yield('layout.footer')
+
+    
