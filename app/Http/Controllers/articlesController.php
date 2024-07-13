@@ -143,5 +143,17 @@ public function ArticlesDelete(Request $request, $id)
     return redirect()->route('admin.articlesView')->with('success', 'Article deleted successfully!');
 }
 
+ //Ajax Update Featured
+ public function updateFeatured(Request $request)
+ {
+     $article = articles::find($request->id);
+     if ($article) {
+         $article->featured = $request->featured;
+         $article->save();
+         return response()->json(['success' => 'Featured status updated successfully!']);
+     }
+     return response()->json(['error' => 'Article not found!'], 404);
+ }
+
 
 }

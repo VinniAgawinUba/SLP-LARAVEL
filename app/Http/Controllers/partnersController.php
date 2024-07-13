@@ -133,4 +133,16 @@ class PartnersController extends Controller
 
         return redirect()->route('admin.partnersView')->with('success', 'Partner deleted successfully!');
     }
+
+    //Ajax Update Featured
+    public function updateFeatured(Request $request)
+    {
+        $partner = partners::find($request->id);
+        if ($partner) {
+            $partner->featured = $request->featured;
+            $partner->save();
+            return response()->json(['success' => 'Featured status updated successfully!']);
+        }
+        return response()->json(['error' => 'Partner not found!'], 404);
+    }
 }

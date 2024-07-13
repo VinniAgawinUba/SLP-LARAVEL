@@ -73,6 +73,6 @@
     @include('layout.scripts')
 @else
     <script>
-        window.location.href = '/home';
+        window.location.href = '/';
     </script>
 @endif

@@ -71,6 +71,7 @@ Route::get('/admin/projects/edit/{id}', [ProjectsController::class, 'ProjectsEdi
 Route::post('/admin/projects/update/{id}', [ProjectsController::class, 'ProjectsUpdate'])->name('admin.projectsUpdate');
 Route::post('/admin/projects/delete/{id}', [ProjectsController::class, 'ProjectsDelete'])->name('admin.projectsDelete');
 Route::delete('/admin/projects/document-delete/{id}', [ProjectsController::class, 'IndividualProjectDocumentDelete'])->name('admin.projects.documentDelete');
+Route::post('/admin/projects/update-featured', [ProjectsController::class, 'updateFeatured'])->name('admin.projectsUpdateFeatured'); //Ajax Update Featured
 
 //Admin Faculty
 Route::get('/admin/faculty/view', [FacultiesController::class, 'FacultyView'])->name('admin.facultyView');
@@ -87,6 +88,7 @@ Route::post('/admin/partners/add', [PartnersController::class, 'PartnersInsert']
 Route::get('/admin/partners/edit/{id}', [PartnersController::class, 'PartnersEdit'])->name('admin.partnersEdit');
 Route::post('/admin/partners/update/{id}', [PartnersController::class, 'PartnersUpdate'])->name('admin.partnersUpdate');
 Route::post('/admin/partners/delete/{id}', [PartnersController::class, 'PartnersDelete'])->name('admin.partnersDelete');
+Route::post('/admin/partners/update-featured', [PartnersController::class, 'updateFeatured'])->name('admin.partnersUpdateFeatured'); //Ajax Update Featured
 
 //Admin Articles
 Route::get('/admin/articles/view', [ArticlesController::class, 'ArticlesView'])->name('admin.articlesView');
@@ -95,6 +97,7 @@ Route::post('/admin/articles/add', [ArticlesController::class, 'ArticlesInsert']
 Route::get('/admin/articles/edit/{id}', [ArticlesController::class, 'ArticlesEdit'])->name('admin.articlesEdit');
 Route::post('/admin/articles/update/{id}', [ArticlesController::class, 'ArticlesUpdate'])->name('admin.articlesUpdate');
 Route::post('/admin/articles/delete/{id}', [ArticlesController::class, 'ArticlesDelete'])->name('admin.articlesDelete');
+Route::post('/admin/articles/update-featured', [ArticlesController::class, 'updateFeatured'])->name('admin.articlesUpdateFeatured'); //Ajax Update Featured
 
 //Admin Gallery
 Route::get('/admin/gallery/view', [GalleriesController::class, 'GalleryView'])->name('admin.galleryView');

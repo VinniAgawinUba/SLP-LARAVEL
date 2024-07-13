@@ -60,7 +60,7 @@
                                         <td>{{ $row['contact_number'] }}</td>
                                         <td>{{ isset($partnerTypes[$row['type_id']]) ? $partnerTypes[$row['type_id']] : 'Unknown' }}</td>
                                         <td>
-                                            <input type="checkbox" value="{{ $row['id'] }}" {{ $row['featured'] == 1 ? 'checked' : '' }} data-partnerid="{{ $row['id'] }}">
+                                            <input type="checkbox" class="featured-checkbox" data-id="{{ $row->id }}" {{ $row->featured == 1 ? 'checked' : '' }}>
                                         </td>
                                         <td>
                                             <a href="{{ route('admin.partnersEdit', ['id' => $row['id']]) }}" class="btn btn-primary"><span class="material-symbols-outlined"> edit </span></a>
@@ -86,39 +86,38 @@
         </div>
     </div>
 
-    <!-- JavaScript for handling checkbox clicks -->
-    <script>
-        // Listen for click events on checkboxes
-        document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
-            checkbox.addEventListener('click', function() {
-                // Get the partner ID and the checked status
-                var partnerID = this.value;
-                var isChecked = this.checked ? 1 : 0;
-
-                // Send AJAX request
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', '{{ url("javascript-update_featured_partners.php") }}', true); // Update the URL to your PHP file
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === XMLHttpRequest.DONE) {
-                        // Handle response
-                        if (xhr.status === 200) {
-                            console.log('Featured status updated successfully');
-                        } else {
-                            console.error('Error updating featured status');
-                        }
-                    }
-                };
-                xhr.send('update_featured=true&id=' + partnerID + '&featured=' + isChecked);
-            });
-        });
-    </script>
+    
 
     @include('layout.admin-footer')
     @include('layout.scripts')
+
+    <script>
+        $(document).ready(function() {
+            $('.featured-checkbox').on('change', function() {
+                var projectId = $(this).data('id');
+                var featuredStatus = $(this).is(':checked') ? 1 : 0;
+        
+                $.ajax({
+                    url: '{{ route("admin.partnersUpdateFeatured") }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: projectId,
+                        featured: featuredStatus
+                    },
+                    success: function(response) {
+                        alert('Featured status updated successfully! Will now be displayed on the homepage.');
+                    },
+                    error: function(response) {
+                        alert('An error occurred while updating the featured status.');
+                    }
+                });
+            });
+        });
+        </script>
 @else
     @php
-        header('Location: ' . url('/home'));
+        header('Location: ' . url('/'));
         exit();
     @endphp
 @endif

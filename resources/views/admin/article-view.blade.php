@@ -45,7 +45,7 @@
                                 <td>{{ $row->thumb_nail_summary }}</td>
                                 <td>{{ $row->published_date }}</td>
                                 <td>
-                                    <input type="checkbox" value="{{ $row['id'] }}" {{ $row['featured'] == 1 ? 'checked' : '' }} data-partnerid="{{ $row['id'] }}">
+                                    <input type="checkbox" class="featured-checkbox" data-id="{{ $row->id }}" {{ $row->featured == 1 ? 'checked' : '' }}>
                                 </td>
 
                                 <td>
@@ -71,6 +71,30 @@
 
 @include('layout.admin-footer')
 @include('layout.scripts')
+<script>
+    $(document).ready(function() {
+        $('.featured-checkbox').on('change', function() {
+            var projectId = $(this).data('id');
+            var featuredStatus = $(this).is(':checked') ? 1 : 0;
+    
+            $.ajax({
+                url: '{{ route("admin.articlesUpdateFeatured") }}',
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: projectId,
+                    featured: featuredStatus
+                },
+                success: function(response) {
+                    alert('Featured status updated successfully! Will now be displayed on the homepage.');
+                },
+                error: function(response) {
+                    alert('An error occurred while updating the featured status.');
+                }
+            });
+        });
+    });
+    </script>
 @else
 <script>window.location.href = '/';</script>
 @endif

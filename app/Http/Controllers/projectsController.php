@@ -330,5 +330,17 @@ class ProjectsController extends Controller
     
         return redirect()->route('admin.projectsView')->with('success', 'Project deleted successfully!');
     }
+
+    //Ajax Update Featured
+    public function updateFeatured(Request $request)
+    {
+        $project = projects::find($request->id);
+        if ($project) {
+            $project->featured = $request->featured;
+            $project->save();
+            return response()->json(['success' => 'Featured status updated successfully!']);
+        }
+        return response()->json(['error' => 'Project not found!'], 404);
+    }
     
 }
