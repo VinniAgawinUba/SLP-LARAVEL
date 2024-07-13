@@ -310,8 +310,7 @@
                             <a href="{{ route('articles.Details', $item->id) }}"
                                 style="text-decoration: none; color: inherit;">
                                 <div class="card h-100" style="margin-top: 50px !important;" id="card">
-                                    <img src="{{ asset('uploads/articles/' . $item->thumb_nail_pic) }}"
-                                        class="customPic">
+                                    <img src="{{ asset('assets/uploads/articles/' . $item->thumb_nail_pic) }}" class="customPic"> <!-- Placeholder for image-->
                                     <div class="card-body">
                                         <h5 id="title">{{ $item->thumb_nail_title }}</h5>
                                         <p id="card-text">{{ $item->thumb_nail_summary }}</p>
