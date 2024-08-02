@@ -14,6 +14,3 @@ php artisan route:cache
 
 echo "Running migrations..."
 php artisan migrate --force
-
-echo "Running Queue Worker"
-nohup php artisan queue:work > /dev/null 2>&1 &
