@@ -26,24 +26,12 @@ return new class extends Migration
             $table->timestamp('password_reset_at')->nullable();
         });
 
-        //create admin user
+        // Insert multiple users with different authentication roles
         DB::table('users')->insert([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('admin'),
-            'auth_role' => 'admin',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        //create super user
-        DB::table('users')->insert([
-            'name' => 'super',
-            'email' => 'super@gmail.com',
-            'password' => bcrypt('super'),
-            'auth_role' => 'super',
-            'created_at' => now(),
-            'updated_at' => now(),
+            ['name' => 'User', 'email' => 'user@example.com', 'password' => bcrypt('userpassword'), 'auth_role' => 'user'],
+            ['name' => 'Super', 'email' => 'super@example.com', 'password' => bcrypt('superpassword'), 'auth_role' => 'super'],
+            ['name' => 'Admin', 'email' => 'admin@example.com', 'password' => bcrypt('adminpassword'), 'auth_role' => 'admin'],
+          
         ]);
         
 
