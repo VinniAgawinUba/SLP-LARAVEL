@@ -51,7 +51,7 @@ class LoginController extends Controller
     
         // If not a Google account, proceed with traditional authentication
         if (auth()->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('home');
+            return redirect()->route('index')->with('success', 'Logged In Successfully');
         } else {
             return redirect()->back()->with('error', 'Wrong Username or Password.');
         }
