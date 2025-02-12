@@ -73,7 +73,7 @@
                                 <input type="file" name="image" class="form-control">
                                 <div class="navbar navbar-light" style="background-color: #e3f2fd;">
                                     <label for="">Current Image:</label>
-                                    <img src="{{ asset($faculty_data->image)}}" width="30%" height="30%">
+                                    <img src="{{ asset('assets/uploads/faculty/' .$faculty_data->image)}}" width="30%" height="30%">
                                 </div>
                             </div>
                             <div class="col-md-12 mb-3">

@@ -72,7 +72,7 @@
                                     Unknown Role
                                     @endif
                                 </td>
-                                <td><img src="{{ asset($row->image) }}" width="60px" height="60px"></td>
+                                <td><img src="{{ asset('assets/uploads/faculty/'.$row->image) }}" width="60px" height="60px"></td>
 
                                 <td>
                                     <a href="{{ route('admin.facultyEdit', $row->id) }}" class="btn btn-primary"><span class="material-symbols-outlined"> edit </span></a>

@@ -41,7 +41,7 @@ class FacultiesController extends Controller
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('assets/uploads/faculty'), $imageName);
-            $validatedData['image'] = 'assets/uploads/faculty/' . $imageName;
+            $validatedData['image'] =  $imageName;
         }
 
         // Create a new Faculty model instance and fill it with the validated data
@@ -90,7 +90,7 @@ class FacultiesController extends Controller
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('assets/uploads/faculty'), $imageName);
-            $validatedData['image'] = 'assets/uploads/faculty/' . $imageName;
+            $validatedData['image'] = $imageName;
         }
 
         // Update the Faculty model with the validated data
