@@ -1,3 +1,7 @@
+### PRE-REQUISITES ###
+1. PHP 8.2
+2. Composer
+
 ### How to setup Local Development? ###
 1. Clone Repository
 2. Open project folder in VScode or Editor of your choice
