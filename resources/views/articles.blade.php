@@ -1,9 +1,9 @@
-<!-- resources/views/home.blade.php -->
 @include('layout.header')
 @include('layout.navbar')
 <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+
 <style>
-    .header {
+    .headers {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
@@ -11,61 +11,7 @@
         line-height: 58px;
         text-align: center;
         color: #283971;
-        margin-top: 99px;
-    }
-
-    .centered-textfield {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #textfield {
-        width: 40%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 78px;
-        border-radius: 15px;
-        padding: 8px 12px;
-        background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat 10px;
-        border: 3px solid #ccc;
-        padding-left: 40px;
-        background-size: 20px;
-    }
-
-    ::placeholder {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 13px;
-        line-height: 16px;
-        letter-spacing: 0.205em;
-        color: rgba(40, 57, 113, 0.47);
-    }
-
-    .filter {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 15px;
-        text-align: center;
-        letter-spacing: 0.2em;
-        color: #6F6F6F;
-        margin-left: 100px;
-    }
-
-    .filter-type {
-        background: #283971;
-        border-radius: 30px;
-        width: 157.07px;
-        height: 38.96px;
-        border: none;
-        padding: 8px;
-        color: #FFFFFF;
-        font-weight: bold;
-        border: none;
-        text-decoration: none;
+        margin-top: 40px; /* Reduced margin-top for a better fit */
     }
 
     .horizontal-line {
@@ -78,120 +24,83 @@
         margin-bottom: 57px;
     }
 
-    .year {
-        border-radius: 20px;
-        margin-top: 30px;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 30px;
-        line-height: 36px;
-        width: 300px;
-        height: 178px;
-        color: #89A5FF;
-        background: url('{{ asset('assets/images/BGbluebook.png') }}'); /* Ensure correct path */
-        padding: 50px;
-        padding-top: 10px;
-        background-size: cover;
-        background-position: center;
-    }
-
-    .year:hover {
-        transform: scale(1.1);
-        transition: transform 0.3s ease;
-        box-shadow: 0px 0px 5px #FFFFFF;
-        cursor: pointer;
-    }
-
-    #three-columns {
-        flex-basis: 36px;
-        margin: 29px;
-    }
-
- 
-
-
-    #background-image {
-        background-image: url('{{ asset('assets/images/BG.png') }}'); /* Ensure correct path */
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 70vw;
-        object-fit: contain;
-    }
-
-    body {
-        margin-left: 100px;
-        margin-right: 100px;
-    }
-
-
-    #college-of {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 13px;
-        line-height: 16px;
-        text-align: center;
-        letter-spacing: 0.205em;
-        color: #5C80FA;
-        mix-blend-mode: normal;
-    }
-
-    .header-container {
-        display: flex;
-        background-color: #A19158;
-        padding: 15px 0;
-        margin-left: -12px;
-        margin-right: -12px;
-        justify-content: left;
-        align-items: left;
-        border-radius: 5px;
-    }
-
-    #featured-header {
-        padding: 20px;
-        margin-left: 100px;
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 39px;
-        color: #FFFFFF;
-    }
-
-    .featured-section {
-        margin-top: -50px;
-    }
-
-   
-
-    .card-body-featured {
+    #card {
         background: #FFFFFF;
         border-radius: 10px;
-        width: 303px;
-        height: 475px;
+        width: 270px; /* Adjusted size of the cards */
+        height: 420px; /* Adjusted height */
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
     }
 
-    .hidden {
-        display: none;
+    #card-box {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        text-overflow: ellipsis;
     }
 
+    #card-box:hover {
+        transition: transform 0.2s;
+        transform: scale(1.05);
+    }
+
+    #title {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 23px;
+        color: #000000;
+        margin-top: 26px;
+        overflow: visible; /* Allow title to take more than one line */
+        white-space: normal; /* Allow wrapping */
+    }
+
+    #card-text {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px; /* Increased font size for better readability */
+        line-height: 16px; /* Increased line height */
+        margin-top: 8px;
+        color: #000000;
+        margin-bottom: 0px;
+        text-align: justify;
+        max-height: 60px; /* Limited height to avoid overflow */
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    #card-date {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 8px;
+        line-height: 10px;
+        color: #6F6F6F;
+        text-align: right;
+        margin-right: 30px;
+        margin-bottom: 30px;
+    }
+
+    /* Pagination Styling */
     .pagination {
         padding: 20px 0;
-        margin-top: 20px;
         text-align: center;
         justify-content: center;
+        position: relative; /* Ensures it's placed outside background */
+        z-index: 1; /* Makes sure it stays on top of any background images */
     }
 
     .pagination a {
         color: #283971;
-        float: left;
         padding: 8px 16px;
-        text-decoration: none;
-        transition: background-color .3s;
         border: 1px solid #ddd;
         margin: 0 4px;
+        text-decoration: none;
+        transition: background-color .3s;
     }
 
     .pagination a.active {
@@ -201,27 +110,38 @@
     }
 
     .pagination a:hover:not(.active) {
-        background-color: #ffff;
+        background-color: #f5f5f5;
     }
 
-    #card {
-        background: #FFFFFF;
-        border-radius: 10px;
-        width: 303px;
-        height: 475px;
+    /* Grid layout to adjust the number of cards per row */
+    .articles-container {
+        min-height: 70vh; /* Ensure the container adapts to content */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 30px;
+        margin-bottom: 20px;
     }
 
-    #card-box {
-        flex-basis: 36px;
-        margin: 29px;
-        text-overflow: ellipsis;
-        height: 40%;
-        width: 80%;
+    .container-fluid.custombg-image-row {
+        padding-bottom: 40px; /* Ensure no clipping of pagination */
     }
 
-    #card-box:hover {
-        transition: transform 0.2s;
-        transform: scale(1.05);
+    /* Add a padding to ensure the pagination does not overlap the image */
+    .custombg-image-row {
+        padding-bottom: 100px; /* Adjust this padding to create space below the articles */
+    }
+</style>
+<style>
+    /* Limit the thumbnail image height */
+    #card img {
+        max-height: 100px; /* Adjust this value to control the height of the thumbnail */
+        width: 100%; /* Ensures the image maintains aspect ratio and fits the width of the card */
+        object-fit: cover; /* Ensures the image fills the area without distortion */
+    }
+
+    #card-body {
+        flex-grow: 1; /* Ensures content takes available space */
     }
 
     #card-date {
@@ -230,50 +150,44 @@
         font-weight: 400;
         font-size: 8px;
         line-height: 10px;
-
         color: #6F6F6F;
         text-align: right;
         margin-right: 30px;
         margin-bottom: 30px;
     }
-
 </style>
-<h4 class="header">ARTICLES</h4>
-<hr class="horizontal-line">
-@include('shared.success-message')
-@include('shared.error-message')
 
-    <div class="container-fluid" id="first-content">
-        <div class="row gy-3" id="background-image">
-            <div class="mainContent">
-                <div class="row gy-3">
-               
-                    @if($articles->isNotEmpty())
-                        @foreach ($articles as $item)
-                        @php
-                        $article_id = $item->id;
-                        @endphp
-                        <div style="display: flex; justify-content: center;" id="card-box">
-                            <a href="{{ route('articles.Details', ['article_id' => $item->id]) }}" style="text-decoration: none; color: inherit;">
-                                <div class="card h-100" style="margin-top: 50px !important;" id="card">
-                                    <img src="{{ asset('assets/uploads/articles/' . $item->thumb_nail_pic) }}" class="customPic"> <!-- Placeholder for image-->
-                                    <div class="card-body">
-                                        <h5 id="title">{{ $item->thumb_nail_title }}</h5>
-                                        <p id="card-text">{{ $item->thumb_nail_summary }}</p>
-                                        <!-- You can add more project details here -->
-                                    </div>
-                                    <!--Bottom of Card to place date-->
-                                    <p style="padding:5px; font-size:12px" id="card-date">{{ date('F j, Y', strtotime($item->published_date)) }}</p>
-                                </div>
-                            </a>
+
+<h1 class="headers">ARTICLES</h1>
+<hr class="horizontal-line">
+
+<div class="container-fluid custombg-image-row">
+    <div class="articles-container">
+        @if($articles->isNotEmpty())
+            @foreach ($articles as $item)
+            <div id="card-box">
+                <a href="{{ route('articles.Details', ['article_id' => $item->id]) }}" style="text-decoration: none; color: inherit;">
+                    <div class="card" id="card">
+                        <img src="{{ asset('assets/uploads/articles/' . $item->thumb_nail_pic) }}" alt="{{ $item->thumb_nail_title }}">
+                        <div class="card-body">
+                            <h5 class="card-title" id="title">{{ $item->thumb_nail_title }}</h5>
+                            <p class="card-text" id="card-text">{{ Str::limit($item->thumb_nail_summary, 120) }}</p> <!-- Increased limit for summary -->
                         </div>
-                        @endforeach
-                    @endif
-                </div>
+                        <p style="font-size: 12px; padding: 5px; text-align: right; color: #6F6F6F;" id="card-date">{{ date('F j, Y', strtotime($item->published_date)) }}</p>
+                    </div>
+                </a>
             </div>
-        </div>
-        {{ $articles->links('pagination::bootstrap-5') }}
+            @endforeach
+        @else
+            <p>No articles found.</p>
+        @endif
     </div>
 
+</div>
+
+<!-- Pagination Outside the Background Image -->
+<div class="pagination">
+    {{ $articles->links('pagination::bootstrap-5') }}
+</div>
 
 @include('layout.footer')

@@ -12,7 +12,7 @@ class ArticlesController extends Controller
     //Front page side
     public function articles()
     {
-        $articles = articles::orderBy('published_date', 'desc')->paginate(5);
+        $articles = articles::orderBy('published_date', 'desc')->paginate(4);
         return view('articles', ['articles' => $articles]);
     }
 
