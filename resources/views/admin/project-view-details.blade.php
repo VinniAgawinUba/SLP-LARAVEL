@@ -149,7 +149,7 @@
                             <!-- Column 1 of Card -->
                             <div class="col-md-6">
                                 @if ($photo)
-                                   <img class="project-image" src="{{ asset($photo->file_name) }}" alt="project photo">
+                                   <img class="project-image" src="{{ asset('assets/uploads/gallery_photos/'.$photo->file_name) }}" alt="project photo">
                                 @else
                                     <p>No project photo available.</p>
                                 @endif
