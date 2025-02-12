@@ -69,7 +69,7 @@ class ArticlesController extends Controller
             $image = $request->file('thumb_nail_pic');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('assets/uploads/articles'), $imageName);
-            $validatedData['thumb_nail_pic'] = 'assets/uploads/articles/' . $imageName;
+            $validatedData['thumb_nail_pic'] = $imageName;
             $validatedData['published_date'] = now(); // Use the current timestamp or set a specific date
 
         }

@@ -182,7 +182,7 @@
                         <div class="carousel-inner">
                             @foreach ($gallery->photos->take(5) as $index => $photo)
                                 <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                    <img src="{{$photo->file_name }}" class="d-block w-100" alt="{{ $photo->file_name }}">
+                                    <img src="{{asset('assets/uploads/gallery_photos/' . $photo->file_name)}}" class="d-block w-100" alt="{{ $photo->file_name }}">
                                 </div>
                             @endforeach
                         </div>
