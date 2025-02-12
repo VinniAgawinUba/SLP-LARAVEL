@@ -50,7 +50,7 @@
                     <div class="row">
                         @foreach($gallery->photos as $photo)
                             <div class="col-md-3 mb-3">
-                                <img src="{{ asset($photo->file_path) }}" alt="Photo" class="img-thumbnail">
+                                <img src="{{ asset('assets/uploads/gallery_photos/' . $photo->file_name) }}" alt="Photo" class="img-thumbnail">
                                 <form action="{{ route('admin.photoDelete', $photo->id) }}" method="POST" class="mt-2">
                                     @csrf
                                     @method('delete')

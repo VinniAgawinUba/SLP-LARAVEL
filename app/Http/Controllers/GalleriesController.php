@@ -64,7 +64,7 @@ class GalleriesController extends Controller
             $galleryPhoto = new gallery_photos();
             $galleryPhoto->gallery_id = $newGallery->id;
             $galleryPhoto->project_id = $newGallery->project_id;
-            $galleryPhoto->file_name = 'assets/uploads/gallery_photos/' . $imageName;
+            $galleryPhoto->file_name = $imageName;
             $galleryPhoto->save();
         }
 
@@ -116,7 +116,7 @@ class GalleriesController extends Controller
                 $galleryPhoto = new gallery_photos();
                 $galleryPhoto->gallery_id = $gallery->id;
                 $galleryPhoto->project_id = $gallery->project_id;
-                $galleryPhoto->file_name = 'assets/uploads/gallery_photos/' . $imageName;
+                $galleryPhoto->file_name =  $imageName;
                 $galleryPhoto->save();
             }
         }

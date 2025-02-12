@@ -22,90 +22,90 @@
                     </h4>
                 </div>
                 <div class="card-body">
-
-                    <table id="myFaculty" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Service Learning Project</th>
-                                <th>Description</th>
-                                <th>SL Type</th>
-                                <th>Hosted</th>
-                                <th>Faculty</th>
-                                <th>College</th>
-                                <th>Department</th>
-                                <th>Partner</th>
-                                <th>School Year</th>
-                                <th>Semester</th>
-                                <th>Status</th>
-                                <th>Featured</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($projects as $row)
-                            <tr>
-                                <td>{{ $row->id }}</td>
-                                <td><a href="{{route('admin.projectsViewDetails', $row->id)}}">{{ $row->name }}</a></td>
-                                <td>{{ $row->description }}</td>
-                                <td>{{ $row->sl_type }}</td>
-                                <td>{{ $row->subject_hosted }}</td>
-                                <td>
-                                    @if($row->faculties)
-                                    @foreach($row->faculties as $faculty)
-                                    {{ $faculty->fname }} {{ $faculty->lname }}<br>
-                                    @endforeach
-                                    @else
-                                    No Faculty Found
-                                    @endif
-                                </td>
-
-                                <td>
-                                    @if($row->college)
-                                    {{ $row->college->name }}
-                                    @else
-                                    No College Found
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($row->department)
-                                    {{ $row->department->name }}
-                                    @else
-                                    No Department Found
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($row->partner)
-                                    {{ $row->partner->name }}
-                                    @else
-                                    No Partner Found
-                                    @endif
-                                </td>
-                                <td>{{ $row->schoolYear->school_year }}</td>
-                                <td>{{$row->semester}}</td>
-                                <td>{{$row->status}}</td>
-                                <td>
-                                    <input type="checkbox" class="featured-checkbox" data-id="{{ $row->id }}" {{ $row->featured == 1 ? 'checked' : '' }}>
-                                </td>
-                                
-
-                                <td>
-                                    <a href="{{ route('admin.projectsEdit', $row->id) }}" class="btn btn-primary"><span class="material-symbols-outlined"> edit </span></a>
-                                </td>
-                                <td>
-                                    <form action="{{ route('admin.projectsDelete', $row->id) }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{ $row->id }}">
-                                        <button type="submit" name="FacultyDelete" value="{{ $row->id }}" class="btn btn-danger deleteButton"><span class="material-symbols-outlined"> delete </span></button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-
+                    <div style="overflow-x: auto; width: 100%;">
+                        <table id="myFaculty" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Service Learning Project</th>
+                                    <th>Description</th>
+                                    <th>SL Type</th>
+                                    <th>Hosted</th>
+                                    <th>Faculty</th>
+                                    <th>College</th>
+                                    <th>Department</th>
+                                    <th>Partner</th>
+                                    <th>School Year</th>
+                                    <th>Semester</th>
+                                    <th>Status</th>
+                                    <th>Featured</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($projects as $row)
+                                <tr>
+                                    <td>{{ $row->id }}</td>
+                                    <td><a href="{{route('admin.projectsViewDetails', $row->id)}}">{{ $row->name }}</a></td>
+                                    <td>{{ $row->description }}</td>
+                                    <td>{{ $row->sl_type }}</td>
+                                    <td>{{ $row->subject_hosted }}</td>
+                                    <td>
+                                        @if($row->faculties)
+                                        @foreach($row->faculties as $faculty)
+                                        {{ $faculty->fname }} {{ $faculty->lname }}<br>
+                                        @endforeach
+                                        @else
+                                        No Faculty Found
+                                        @endif
+                                    </td>
+                
+                                    <td>
+                                        @if($row->college)
+                                        {{ $row->college->name }}
+                                        @else
+                                        No College Found
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($row->department)
+                                        {{ $row->department->name }}
+                                        @else
+                                        No Department Found
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($row->partner)
+                                        {{ $row->partner->name }}
+                                        @else
+                                        No Partner Found
+                                        @endif
+                                    </td>
+                                    <td>{{ $row->schoolYear->school_year }}</td>
+                                    <td>{{$row->semester}}</td>
+                                    <td>{{$row->status}}</td>
+                                    <td>
+                                        <input type="checkbox" class="featured-checkbox" data-id="{{ $row->id }}" {{ $row->featured == 1 ? 'checked' : '' }}>
+                                    </td>
+                
+                                    <td>
+                                        <a href="{{ route('admin.projectsEdit', $row->id) }}" class="btn btn-primary"><span class="material-symbols-outlined"> edit </span></a>
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('admin.projectsDelete', $row->id) }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $row->id }}">
+                                            <button type="submit" name="FacultyDelete" value="{{ $row->id }}" class="btn btn-danger deleteButton"><span class="material-symbols-outlined"> delete </span></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+                
             </div>
         </div>
     </div>

@@ -170,7 +170,7 @@
         @forelse ($gallery->photos as $photo)
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="{{ asset($photo->file_name) }}" class="card-img-top" alt="Photo">
+                    <img src="{{asset('assets/uploads/gallery_photos/' . $photo->file_name)}}" class="card-img-top" alt="Photo">
                     <div class="card-body">
                         <p class="card-text">Uploaded on {{ date('F j, Y', strtotime($photo->created_at)) }}</p>
                         <!-- You can add more details here as needed -->

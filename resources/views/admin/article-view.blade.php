@@ -41,7 +41,7 @@
                             <tr>
                                 <td>{{ $row->id }}</td>
                                 <td>{{ $row->project_id }}</td>
-                                <td><img src="{{$row->thumb_nail_pic}}" width="60px" height="60px"></td>
+                                <td><img src="{{ asset('assets/uploads/articles/' . $row->thumb_nail_pic) }}" width="60px" height="60px"></td>
                                 <td>{{ $row->thumb_nail_summary }}</td>
                                 <td>{{ $row->published_date }}</td>
                                 <td>

@@ -32,54 +32,56 @@
                         </h4>
                     </div>
                     <div class="card-body">
-                        <table id="myPartner" class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Logo</th>
-                                    <th>Address</th>
-                                    <th>Contact Person</th>
-                                    <th>Email</th>
-                                    <th>Contact Number</th>
-                                    <th>Partner Type</th>
-                                    <th>Featured</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($partners_list as $row)
+                        <div style="overflow-x: auto; width: 100%;">
+                            <table id="myPartner" class="table table-bordered table-striped">
+                                <thead>
                                     <tr>
-                                        <td>{{ $row['id'] }}</td>
-                                        <td>{{ $row['name'] }}</td>
-                                        <td><img src="{{ asset('assets/uploads/partner_logos/'.$row['logo_image']) }}" alt="{{ $row['name'] }}-logo" style="width: 100px;"></td>
-                                        <td>{{ $row['address'] }}</td>
-                                        <td>{{ $row['contact_person'] }}</td>
-                                        <td>{{ $row['email'] }}</td>
-                                        <td>{{ $row['contact_number'] }}</td>
-                                        <td>{{ isset($partnerTypes[$row['type_id']]) ? $partnerTypes[$row['type_id']] : 'Unknown' }}</td>
-                                        <td>
-                                            <input type="checkbox" class="featured-checkbox" data-id="{{ $row->id }}" {{ $row->featured == 1 ? 'checked' : '' }}>
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('admin.partnersEdit', ['id' => $row['id']]) }}" class="btn btn-primary"><span class="material-symbols-outlined"> edit </span></a>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('admin.partnersDelete', $row->id) }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="partner_delete_btn" value="{{ $row['id'] }}">
-                                                <button type="submit" class="btn btn-danger deleteButton"><span class="material-symbols-outlined"> delete </span></button>
-                                            </form>
-                                        </td>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Logo</th>
+                                        <th>Address</th>
+                                        <th>Contact Person</th>
+                                        <th>Email</th>
+                                        <th>Contact Number</th>
+                                        <th>Partner Type</th>
+                                        <th>Featured</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="11">No Record Found</td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @forelse ($partners_list as $row)
+                                        <tr>
+                                            <td>{{ $row['id'] }}</td>
+                                            <td>{{ $row['name'] }}</td>
+                                            <td><img src="{{ asset('assets/uploads/partner_logos/'.$row['logo_image']) }}" alt="{{ $row['name'] }}-logo" style="width: 100px;"></td>
+                                            <td>{{ $row['address'] }}</td>
+                                            <td>{{ $row['contact_person'] }}</td>
+                                            <td>{{ $row['email'] }}</td>
+                                            <td>{{ $row['contact_number'] }}</td>
+                                            <td>{{ isset($partnerTypes[$row['type_id']]) ? $partnerTypes[$row['type_id']] : 'Unknown' }}</td>
+                                            <td>
+                                                <input type="checkbox" class="featured-checkbox" data-id="{{ $row->id }}" {{ $row->featured == 1 ? 'checked' : '' }}>
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.partnersEdit', ['id' => $row['id']]) }}" class="btn btn-primary"><span class="material-symbols-outlined"> edit </span></a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('admin.partnersDelete', $row->id) }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="partner_delete_btn" value="{{ $row['id'] }}">
+                                                    <button type="submit" class="btn btn-danger deleteButton"><span class="material-symbols-outlined"> delete </span></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="11">No Record Found</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div> <!-- End of scrollable div -->
                     </div>
                 </div>
             </div>
