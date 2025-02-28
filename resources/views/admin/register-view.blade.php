@@ -47,20 +47,8 @@
                                             @case("super")
                                                 Super Admin
                                                 @break
-                                            @case("approval")
-                                                Recommending User Approval
-                                                @break
-                                            @case("skilled")
-                                                Skilled Department Head
-                                                @break
-                                            @case("custodial")
-                                                Custodial Department Head
-                                                @break
-                                            @case("cworker")
-                                                Custodial Worker
-                                                @break
-                                            @case("sworker")
-                                                Skilled Worker
+                                            @case("admin")
+                                                Admin
                                                 @break
                                             @default
                                                 Unknown Role

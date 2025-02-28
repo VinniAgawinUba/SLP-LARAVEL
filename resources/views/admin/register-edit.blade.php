@@ -36,11 +36,8 @@
                                     <option value="">--Select Role--</option>
                                     <option value="user" {{ $user['auth_role'] == 'user' ? 'selected' : '' }}>User</option>
                                     <option value="super" {{ $user['auth_role'] == 'super' ? 'selected' : '' }}>Super Admin</option>
-                                    <option value="approval" {{ $user['auth_role'] == 'approval' ? 'selected' : '' }}>Recommending User Approval</option>
-                                    <option value="skilled" {{ $user['auth_role'] == 'skilled' ? 'selected' : '' }}>Skilled Department Head</option>
-                                    <option value="custodial" {{ $user['auth_role'] == 'custodial' ? 'selected' : '' }}>Custodial Department Head</option>
-                                    <option value="cworker" {{ $user['auth_role'] == 'cworker' ? 'selected' : '' }}>Custodial Worker</option>
-                                    <option value="sworker" {{ $user['auth_role'] == 'sworker' ? 'selected' : '' }}>Skilled Worker</option>
+                                    <option value="admin" {{ $user['auth_role'] == 'admin' ? 'selected' : '' }}>Admin</option>
+                                    
                                 </select>
                             </div>
                             <div class="col-md-12 mb-3">

@@ -28,12 +28,10 @@
                     </nav>
                 </div>
 
-                @if(auth()->check() && in_array(auth()->user()->auth_role, ['super']))
                     <a class="nav-link" href="{{route('admin.registerView')}}">
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                         Registered Users
                     </a>
-                @endif
 
                 <!--- Faculty -->
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFaculty" aria-expanded="false" aria-controls="collapseFaculty">

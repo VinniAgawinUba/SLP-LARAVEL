@@ -41,11 +41,7 @@
                                         <option value="">--Select Role--</option>
                                         <option value="user">User</option>
                                         <option value="super">Super Admin</option>
-                                        <option value="approval">Recommending User Approval</option>
-                                        <option value="skilled">Skilled Department Head</option>
-                                        <option value="custodial">Custodial Department Head</option>
-                                        <option value="cworker">Custodial Worker</option>
-                                        <option value="sworker">Skilled Worker</option>
+                                        <option value="admin">Admin</option>
                                     </select>
                                 </div>
                                 <div class="col-md-12 mb-3">
